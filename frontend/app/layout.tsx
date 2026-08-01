@@ -1,8 +1,8 @@
-import "./globals.css";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Bullseye FX",
-  description: "AI Trading Academy Platform",
+  description: "Professional Forex Education Academy",
 };
 
 export default function RootLayout({
@@ -12,7 +12,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body
+        style={{
+          margin: 0,
+          fontFamily: "Arial, sans-serif",
+          background: "#f8fafc",
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
