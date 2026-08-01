@@ -1,8 +1,13 @@
-export default function HomePage() {
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+
+export default function Home() {
   return (
-    <main>
-      <h1>Welcome to Bullseye FX</h1>
-      <p>AI Trading Academy Platform</p>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <Footer />
+    </>
   );
 }
