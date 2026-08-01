@@ -3,31 +3,40 @@ export default function Hero() {
     <section
       style={{
         background: "#020617",
-        color: "#ffffff",
+        color: "white",
         textAlign: "center",
         padding: "100px 20px",
       }}
     >
-      <h1 style={{ fontSize: "48px" }}>
-        Master Forex Trading with AI
+      <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>
+        Master Forex Trading with Bullseye FX
       </h1>
 
-      <p style={{ fontSize: "20px", marginTop: "20px" }}>
-        Learn Smart Money Concepts, ICT Strategies, and AI-powered market analysis.
+      <p
+        style={{
+          fontSize: "1.2rem",
+          maxWidth: "700px",
+          margin: "0 auto 30px",
+          color: "#cbd5e1",
+        }}
+      >
+        Learn ICT & Smart Money Concepts, master market structure,
+        and trade with confidence through our professional academy.
       </p>
 
       <button
         style={{
-          marginTop: "30px",
-          padding: "15px 30px",
-          background: "#16a34a",
-          color: "#fff",
+          background: "#f59e0b",
+          color: "#000",
           border: "none",
+          padding: "15px 35px",
           borderRadius: "8px",
+          fontSize: "18px",
           cursor: "pointer",
+          fontWeight: "bold",
         }}
       >
-        Get Started
+        Start Learning
       </button>
     </section>
   );
