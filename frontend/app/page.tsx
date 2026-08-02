@@ -5,6 +5,7 @@ import Courses from "../components/Courses";
 import Signals from "../components/Signals";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Signals />
       <Testimonials />
       <Pricing />
+      <Contact />
       <Footer />
     </>
   );
