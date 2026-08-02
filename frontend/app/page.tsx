@@ -1,25 +1,29 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Features from "../components/Features";
-import Courses from "../components/Courses";
-import Signals from "../components/Signals";
-import Testimonials from "../components/Testimonials";
-import Pricing from "../components/Pricing";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
+import StatsCard from "../../components/dashboard/StatsCard";
 
-export default function Home() {
+export default function DashboardPage() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <Courses />
-      <Signals />
-      <Testimonials />
-      <Pricing />
-      <Contact />
-      <Footer />
-    </>
+    <main
+      style={{
+        padding: "40px",
+        background: "#f8fafc",
+        minHeight: "100vh",
+      }}
+    >
+      <h1>Dashboard</h1>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+          gap: "20px",
+          marginTop: "30px",
+        }}
+      >
+        <StatsCard title="Total Trades" value="0" />
+        <StatsCard title="Win Rate" value="0%" />
+        <StatsCard title="Account Balance" value="$0.00" />
+        <StatsCard title="Active Signals" value="0" />
+      </div>
+    </main>
   );
 }
