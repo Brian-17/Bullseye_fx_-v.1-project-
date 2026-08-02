@@ -1,4 +1,4 @@
-import AISignalPanel from "../../components/dashboard/AISignalPanel";import MarketOverview from "../../components/dashboard/MarketOverview";import StatsCard from "../../components/dashboard/StatsCard";
+import EconomicCalendar from "../../components/dashboard/EconomicCalendar";import AISignalPanel from "../../components/dashboard/AISignalPanel";import MarketOverview from "../../components/dashboard/MarketOverview";import StatsCard from "../../components/dashboard/StatsCard";
 import PerformanceChart from "../../components/dashboard/PerformanceChart";
 export default function DashboardPage() {
  import RecentTrades from "../../components/dashboard/RecentTrades";
@@ -30,6 +30,7 @@ export default function DashboardPage() {
       <MarketOverview />
 <RecentTrades />
 <AISignalPanel />
-   </main>
+  <EconomicCalendar />
+    </main>
   );
 }
