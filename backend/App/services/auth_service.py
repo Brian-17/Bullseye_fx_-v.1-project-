@@ -1,11 +1,22 @@
+from app.utils.security import hash_password
+from app.utils.jwt import create_access_token
+
 def register_user(user):
+    hashed = hash_password(user.password)
+
     return {
-        "message": "User registered successfully",
-        "user": user
+        "message": "User registered",
+        "hashed_password": hashed
     }
 
 def login_user(user):
+    token = create_access_token(
+        {
+            "email": user.email
+        }
+    )
+
     return {
-        "message": "Login successful",
-        "user": user
+        "access_token": token,
+        "token_type": "bearer"
     }
