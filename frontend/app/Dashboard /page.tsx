@@ -37,6 +37,7 @@ export default function DashboardPage() {
 <AISignalPanel />
   <EconomicCalendar />
    <BullseyeSetupBuilder />
+     <RiskRewardCalculator />
     </main>
   );
 }
