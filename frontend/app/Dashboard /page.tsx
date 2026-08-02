@@ -1,6 +1,7 @@
 import MarketOverview from "../../components/dashboard/MarketOverview";import StatsCard from "../../components/dashboard/StatsCard";
 import PerformanceChart from "../../components/dashboard/PerformanceChart";
 export default function DashboardPage() {
+ import RecentTrades from "../../components/dashboard/RecentTrades";
   return (
     <main
       style={{
@@ -27,6 +28,8 @@ export default function DashboardPage() {
 
       <PerformanceChart />
       <MarketOverview />
-    </main>
+<RecentTrades />
+
+   </main>
   );
 }
