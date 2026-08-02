@@ -28,4 +28,5 @@ export default function DashboardPage() {
       <PerformanceChart />
     </main>
   );
+  <PerformanceChart />
 }
