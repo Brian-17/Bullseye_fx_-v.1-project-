@@ -1,20 +1,27 @@
-from fastapi import APIRouter
-from app.schemas.trade import TradeCreate
+from typing import List
+
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app.database.dependencies import get_db
+from app.schemas.trade import TradeCreate, TradeResponse
+from app.services.trade_crud import create_trade, get_all_trades
 
 router = APIRouter(
     prefix="/trades",
     tags=["Trades"]
 )
 
-@router.get("/")
-def get_trades():
-    return {
-        "trades": []
-    }
+@router.post("/", response_model=TradeResponse)
+def add_trade(
+    trade: TradeCreate,
+    db: Session = Depends(get_db)
+):
+    return create_trade(db, trade)
 
-@router.post("/")
-def create_trade(trade: TradeCreate):
-    return {
-        "message": "Trade saved successfully",
-        "trade": trade
-    }
+
+@router.get("/", response_model=List[TradeResponse])
+def list_trades(
+    db: Session = Depends(get_db)
+):
+    return get_all_trades(db)
