@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.routes.vip import router as vip_router
 from app.routes.auth import router as auth_router
 
 app = FastAPI(
@@ -7,7 +8,7 @@ app = FastAPI(
 )
 
 app.include_router(auth_router)
-
+app.include_router(vip_router)
 @app.get("/")
 def root():
     return {
