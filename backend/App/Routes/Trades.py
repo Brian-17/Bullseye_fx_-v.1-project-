@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from app.schemas.trade import TradeCreate
 
 router = APIRouter(
     prefix="/trades",
@@ -8,11 +9,12 @@ router = APIRouter(
 @router.get("/")
 def get_trades():
     return {
-        "message": "List of all trades"
+        "trades": []
     }
 
 @router.post("/")
-def create_trade():
+def create_trade(trade: TradeCreate):
     return {
-        "message": "Trade created successfully"
+        "message": "Trade saved successfully",
+        "trade": trade
     }
