@@ -2,4 +2,4 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-from app.models.trade import Trade
+from App.models.trade import Trade
