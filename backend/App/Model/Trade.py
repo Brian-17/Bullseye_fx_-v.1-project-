@@ -7,14 +7,14 @@ class Trade(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    pair = Column(String)
+    pair = Column(String(20), nullable=False)
 
-    direction = Column(String)
+    direction = Column(String(10), nullable=False)
 
-    entry = Column(Float)
+    entry = Column(Float, nullable=False)
 
-    stop_loss = Column(Float)
+    stop_loss = Column(Float, nullable=False)
 
-    take_profit = Column(Float)
+    take_profit = Column(Float, nullable=False)
 
-    result = Column(String)
+    result = Column(String(20), default="Pending")
