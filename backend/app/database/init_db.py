@@ -1,4 +1,5 @@
 from app.database.database import Base, engine
+from app.models.trade import Trade
 
 
 def init_db():
