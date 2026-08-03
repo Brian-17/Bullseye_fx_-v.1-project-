@@ -4,7 +4,7 @@ from app.models.trade import Trade
 from app.schemas.trade import TradeCreate
 
 
-def create_trade(db: Session, trade: TradeCreate):
+def create_trade(db: Session, trade: TradeCreate, user_id: int):
     db_trade = Trade(
         pair=trade.pair,
         direction=trade.direction,
@@ -12,6 +12,7 @@ def create_trade(db: Session, trade: TradeCreate):
         stop_loss=trade.stop_loss,
         take_profit=trade.take_profit,
         result=trade.result,
+        user_id=user_id,
     )
 
     db.add(db_trade)
@@ -21,16 +22,35 @@ def create_trade(db: Session, trade: TradeCreate):
     return db_trade
 
 
-def get_trades(db: Session):
-    return db.query(Trade).all()
+def get_trades(db: Session, user_id: int):
+    return db.query(Trade).filter(Trade.user_id == user_id).all()
 
 
-def get_trade(db: Session, trade_id: int):
-    return db.query(Trade).filter(Trade.id == trade_id).first()
+def get_trade(db: Session, trade_id: int, user_id: int):
+    return (
+        db.query(Trade)
+        .filter(
+            Trade.id == trade_id,
+            Trade.user_id == user_id,
+        )
+        .first()
+    )
 
 
-def update_trade(db: Session, trade_id: int, trade_data: TradeCreate):
-    trade = db.query(Trade).filter(Trade.id == trade_id).first()
+def update_trade(
+    db: Session,
+    trade_id: int,
+    trade_data: TradeCreate,
+    user_id: int,
+):
+    trade = (
+        db.query(Trade)
+        .filter(
+            Trade.id == trade_id,
+            Trade.user_id == user_id,
+        )
+        .first()
+    )
 
     if trade is None:
         return None
@@ -48,8 +68,19 @@ def update_trade(db: Session, trade_id: int, trade_data: TradeCreate):
     return trade
 
 
-def delete_trade(db: Session, trade_id: int):
-    trade = db.query(Trade).filter(Trade.id == trade_id).first()
+def delete_trade(
+    db: Session,
+    trade_id: int,
+    user_id: int,
+):
+    trade = (
+        db.query(Trade)
+        .filter(
+            Trade.id == trade_id,
+            Trade.user_id == user_id,
+        )
+        .first()
+    )
 
     if trade is None:
         return None
