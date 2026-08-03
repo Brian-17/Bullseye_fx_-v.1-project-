@@ -1,21 +1,16 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.database.database import Base
 
 
-class Trade(Base):
-    __tablename__ = "trades"
+class User(Base):
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
 
-    pair = Column(String, nullable=False)
-    direction = Column(String, nullable=False)
-    entry = Column(Float, nullable=False)
-    stop_loss = Column(Float, nullable=False)
-    take_profit = Column(Float, nullable=False)
-    result = Column(String, nullable=True)
+    username = Column(String, unique=True, index=True, nullable=False)
+    email = Column(String, unique=True, index=True, nullable=False)
+    hashed_password = Column(String, nullable=False)
 
-    user_id = Column(Integer, ForeignKey("users.id"))
-
-    user = relationship("User")
+    trades = relationship("Trade", back_populates="user")
