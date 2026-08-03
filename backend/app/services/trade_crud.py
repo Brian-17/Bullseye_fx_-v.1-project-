@@ -1,25 +1,29 @@
-from sqlalchemy.orm import Session
+def update_trade(db: Session, trade_id: int, trade_data: TradeCreate):
+    trade = db.query(Trade).filter(Trade.id == trade_id).first()
 
-from app.models.trade import Trade
-from app.schemas.trade import TradeCreate
+    if not trade:
+        return None
 
+    trade.pair = trade_data.pair
+    trade.direction = trade_data.direction
+    trade.entry = trade_data.entry
+    trade.stop_loss = trade_data.stop_loss
+    trade.take_profit = trade_data.take_profit
+    trade.result = trade_data.result
 
-def create_trade(db: Session, trade: TradeCreate):
-    db_trade = Trade(
-        pair=trade.pair,
-        direction=trade.direction,
-        entry=trade.entry,
-        stop_loss=trade.stop_loss,
-        take_profit=trade.take_profit,
-        result=trade.result,
-    )
-
-    db.add(db_trade)
     db.commit()
-    db.refresh(db_trade)
+    db.refresh(trade)
 
-    return db_trade
+    return trade
 
 
-def get_trades(db: Session):
-    return db.query(Trade).all()
+def delete_trade(db: Session, trade_id: int):
+    trade = db.query(Trade).filter(Trade.id == trade_id).first()
+
+    if not trade:
+        return None
+
+    db.delete(trade)
+    db.commit()
+
+    return {"message": "Trade deleted successfully"}
