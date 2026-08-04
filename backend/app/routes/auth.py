@@ -1,57 +1,62 @@
-from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-import jwt
 
 from app.database.dependencies import get_db
-from app.models.user import User
-from app.utils.security import SECRET_KEY, ALGORITHM
+from app.schemas.auth import (
+    UserRegister,
+    UserLogin,
+    UserResponse,
+)
+from app.services.auth_crud import (
+    register_user,
+    authenticate_user,
+)
+from app.utils.security import create_access_token
 
-security = HTTPBearer()
+router = APIRouter(
+    prefix="/auth",
+    tags=["Authentication"],
+)
 
 
-def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
+@router.post("/register", response_model=UserResponse)
+def register(
+    user: UserRegister,
     db: Session = Depends(get_db),
 ):
-    token = credentials.credentials
+    new_user = register_user(db, user)
 
-    # Debug (remove later if you want)
-    print("TOKEN RECEIVED:", token)
-
-    try:
-        payload = jwt.decode(
-            token,
-            SECRET_KEY,
-            algorithms=[ALGORITHM],
-        )
-
-        user_id = int(payload.get("sub"))
-
-    except jwt.ExpiredSignatureError:
+    if new_user is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token has expired",
+            status_code=400,
+            detail="Email already exists",
         )
 
-    except jwt.InvalidTokenError:
+    return new_user
+
+
+@router.post("/login")
+def login(
+    user: UserLogin,
+    db: Session = Depends(get_db),
+):
+    db_user = authenticate_user(
+        db,
+        user.email,
+        user.password,
+    )
+
+    if db_user is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token",
+            status_code=401,
+            detail="Invalid credentials",
         )
 
-    except Exception:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Authentication failed",
-        )
+    token = create_access_token(
+        {"sub": str(db_user.id)}
+    )
 
-    user = db.query(User).filter(User.id == user_id).first()
-
-    if user is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found",
-        )
-
-    return user
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+    }
