@@ -12,4 +12,5 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
 
-    trades = relationship("Trade", back_populates="user")
+    trades = relationship("Trade", 
+      back_populates="user")
