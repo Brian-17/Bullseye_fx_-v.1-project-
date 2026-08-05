@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.database.dependencies import get_db
@@ -24,15 +26,30 @@ def add_trade(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    return create_trade(db, trade, current_user.id)
+    return create_trade(
+        db=db,
+        trade=trade,
+        user_id=current_user.id,
+    )
 
 
 @router.get("/", response_model=list[TradeResponse])
 def all_trades(
+    pair: Optional[str] = Query(None),
+    result: Optional[str] = Query(None),
+    strategy: Optional[str] = Query(None),
+    session: Optional[str] = Query(None),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    return get_trades(db, current_user.id)
+    return get_trades(
+        db=db,
+        user_id=current_user.id,
+        pair=pair,
+        result=result,
+        strategy=strategy,
+        session=session,
+    )
 
 
 @router.put("/{trade_id}", response_model=TradeResponse)
@@ -43,14 +60,17 @@ def edit_trade(
     current_user: User = Depends(get_current_user),
 ):
     updated_trade = update_trade(
-        db,
-        trade_id,
-        trade,
-        current_user.id,
+        db=db,
+        trade_id=trade_id,
+        trade=trade,
+        user_id=current_user.id,
     )
 
     if updated_trade is None:
-        raise HTTPException(status_code=404, detail="Trade not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Trade not found",
+        )
 
     return updated_trade
 
@@ -62,12 +82,17 @@ def remove_trade(
     current_user: User = Depends(get_current_user),
 ):
     deleted_trade = delete_trade(
-        db,
-        trade_id,
-        current_user.id,
+        db=db,
+        trade_id=trade_id,
+        user_id=current_user.id,
     )
 
     if deleted_trade is None:
-        raise HTTPException(status_code=404, detail="Trade not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Trade not found",
+        )
 
-    return deleted_trade
+    return {
+        "message": "Trade deleted successfully"
+    }
