@@ -8,3 +8,13 @@ class DashboardStats(BaseModel):
     win_rate: float
     total_profit: float
     average_profit: float
+<<<<<<< HEAD
+=======
+
+    # New Analytics
+    profit_factor: float
+    average_rr: float
+    best_pair: str
+    best_strategy: str
+    best_session: str
+>>>>>>> 7b1b1a8addf2d588b66c7af1863bae80647d2a48
