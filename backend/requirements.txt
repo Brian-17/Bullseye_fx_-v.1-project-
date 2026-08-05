@@ -1,12 +1,11 @@
 fastapi
 uvicorn
 sqlalchemy
+alembic
 pyjwt
 passlib
 bcrypt
 email-validator
 python-multipart
-<<<<<<< HEAD
-=======
-alembic
->>>>>>> 7b1b1a8addf2d588b66c7af1863bae80647d2a48
+pytest
+httpx
