@@ -8,6 +8,8 @@ from alembic import context
 
 from app.database.database import Base
 
+target_metadata = Base.metadata
+
 # Import models so Alembic detects tables
 from app.models.user import User
 from app.models.trade import Trade
