@@ -1,11 +1,19 @@
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import (
+    APIRouter,
+    Depends,
+    HTTPException,
+    Query,
+)
 from sqlalchemy.orm import Session
 
 from app.database.dependencies import get_db
 from app.models.user import User
-from app.schemas.trade import TradeCreate, TradeResponse
+from app.schemas.trade import (
+    TradeCreate,
+    TradeResponse,
+)
 from app.services.trade_crud import (
     create_trade,
     get_trades,
@@ -39,6 +47,9 @@ def all_trades(
     result: Optional[str] = Query(None),
     strategy: Optional[str] = Query(None),
     session: Optional[str] = Query(None),
+    search: Optional[str] = Query(None),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(20, ge=1, le=100),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -49,6 +60,9 @@ def all_trades(
         result=result,
         strategy=strategy,
         session=session,
+        search=search,
+        skip=skip,
+        limit=limit,
     )
 
 
