@@ -1,11 +1,13 @@
 from sqlalchemy.orm import Session
 
-<<<<<<< HEAD
 from app.models.user import User
+from app.models.trade import Trade
 from app.schemas.auth import UserRegister
+from app.schemas.trade import TradeCreate
 from app.utils.security import hash_password, verify_password
 
 
+# ===== AUTH FUNCTIONS =====
 def register_user(db: Session, user: UserRegister):
     existing = db.query(User).filter(User.email == user.email).first()
 
@@ -35,11 +37,9 @@ def authenticate_user(db: Session, email: str, password: str):
         return None
 
     return user
-=======
-from app.models.trade import Trade
-from app.schemas.trade import TradeCreate
 
 
+# ===== TRADE FUNCTIONS =====
 def create_trade(db: Session, trade: TradeCreate, user_id: int):
     db_trade = Trade(
         **trade.model_dump(),
@@ -64,61 +64,32 @@ def get_trades(
     skip: int = 0,
     limit: int = 20,
 ):
-    query = db.query(Trade).filter(
-        Trade.user_id == user_id
-    )
+    query = db.query(Trade).filter(Trade.user_id == user_id)
 
     if pair:
         query = query.filter(Trade.pair == pair)
-
     if result:
         query = query.filter(Trade.result == result)
-
     if strategy:
         query = query.filter(Trade.strategy == strategy)
-
     if session:
         query = query.filter(Trade.session == session)
-
     if search:
-        query = query.filter(
-            Trade.notes.ilike(f"%{search}%")
-        )
+        query = query.filter(Trade.notes.ilike(f"%{search}%"))
 
-    return (
-        query
-        .offset(skip)
-        .limit(limit)
-        .all()
-    )
+    return query.offset(skip).limit(limit).all()
 
 
-def get_trade(
-    db: Session,
-    trade_id: int,
-    user_id: int,
-):
+def get_trade(db: Session, trade_id: int, user_id: int):
     return (
         db.query(Trade)
-        .filter(
-            Trade.id == trade_id,
-            Trade.user_id == user_id,
-        )
+        .filter(Trade.id == trade_id, Trade.user_id == user_id)
         .first()
     )
 
 
-def update_trade(
-    db: Session,
-    trade_id: int,
-    trade: TradeCreate,
-    user_id: int,
-):
-    db_trade = get_trade(
-        db,
-        trade_id,
-        user_id,
-    )
+def update_trade(db: Session, trade_id: int, trade: TradeCreate, user_id: int):
+    db_trade = get_trade(db, trade_id, user_id)
 
     if db_trade is None:
         return None
@@ -132,16 +103,8 @@ def update_trade(
     return db_trade
 
 
-def delete_trade(
-    db: Session,
-    trade_id: int,
-    user_id: int,
-):
-    db_trade = get_trade(
-        db,
-        trade_id,
-        user_id,
-    )
+def delete_trade(db: Session, trade_id: int, user_id: int):
+    db_trade = get_trade(db, trade_id, user_id)
 
     if db_trade is None:
         return None
@@ -150,4 +113,3 @@ def delete_trade(
     db.commit()
 
     return db_trade
->>>>>>> 7b1b1a8addf2d588b66c7af1863bae80647d2a48
