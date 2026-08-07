@@ -45,4 +45,4 @@ class UserResponse(BaseModel):
                 "email": "brian@example.com"
             }
         }
-)
+    )
