@@ -9,7 +9,10 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
+<<<<<<< HEAD
 
+=======
+>>>>>>> c2e764e (Fix auth_crud and project errors)
 ${imports if imports else ""}
 
 # revision identifiers, used by Alembic.
@@ -24,4 +27,8 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
+<<<<<<< HEAD
     ${downgrades if downgrades else "pass"}
+=======
+    ${downgrades if downgrades else "pass"}
+>>>>>>> c2e764e (Fix auth_crud and project errors)
