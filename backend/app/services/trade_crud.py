@@ -24,25 +24,52 @@ def get_trades(
     result: str | None = None,
     strategy: str | None = None,
     session: str | None = None,
+    search: str | None = None,
+    skip: int = 0,
+    limit: int = 20,
 ):
-    query = db.query(Trade).filter(Trade.user_id == user_id)
+    query = db.query(Trade).filter(
+        Trade.user_id == user_id
+    )
 
     if pair:
-        query = query.filter(Trade.pair == pair)
+        query = query.filter(
+            Trade.pair == pair
+        )
 
     if result:
-        query = query.filter(Trade.result == result)
+        query = query.filter(
+            Trade.result == result
+        )
 
     if strategy:
-        query = query.filter(Trade.strategy == strategy)
+        query = query.filter(
+            Trade.strategy == strategy
+        )
 
     if session:
-        query = query.filter(Trade.session == session)
+        query = query.filter(
+            Trade.session == session
+        )
 
-    return query.all()
+    if search:
+        query = query.filter(
+            Trade.notes.ilike(f"%{search}%")
+        )
+
+    return (
+        query
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
 
 
-def get_trade(db: Session, trade_id: int, user_id: int):
+def get_trade(
+    db: Session,
+    trade_id: int,
+    user_id: int,
+):
     return (
         db.query(Trade)
         .filter(
@@ -59,13 +86,21 @@ def update_trade(
     trade: TradeCreate,
     user_id: int,
 ):
-    db_trade = get_trade(db, trade_id, user_id)
+    db_trade = get_trade(
+        db=db,
+        trade_id=trade_id,
+        user_id=user_id,
+    )
 
-    if not db_trade:
+    if db_trade is None:
         return None
 
     for key, value in trade.model_dump().items():
-        setattr(db_trade, key, value)
+        setattr(
+            db_trade,
+            key,
+            value,
+        )
 
     db.commit()
     db.refresh(db_trade)
@@ -78,9 +113,13 @@ def delete_trade(
     trade_id: int,
     user_id: int,
 ):
-    db_trade = get_trade(db, trade_id, user_id)
+    db_trade = get_trade(
+        db=db,
+        trade_id=trade_id,
+        user_id=user_id,
+    )
 
-    if not db_trade:
+    if db_trade is None:
         return None
 
     db.delete(db_trade)
