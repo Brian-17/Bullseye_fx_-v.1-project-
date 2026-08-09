@@ -1,0 +1,50 @@
+<div class="flex items-center gap-2">
+	<span class="text-sm text-muted-foreground whitespace-nowrap">{{ label() }}</span>
+	<app-select
+		class="w-[160px]"
+		[options]="options()"
+		[value]="selectedValue()"
+		(valueChange)="onFieldChange($event)"
+		placeholder="Default"
+	/>
+	@if (sort(); as active) {
+	<app-button
+		appearance="text"
+		size="icon-sm"
+		[attr.aria-label]="'Sort ' + (active.direction === 'ASC' ? 'descending' : 'ascending')"
+		(clicked)="toggleDirection()"
+	>
+		@if (active.direction === "ASC") {
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-4 w-4"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<path d="m5 12 7-7 7 7" />
+			<path d="M12 19V5" />
+		</svg>
+		} @else {
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-4 w-4"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M12 5v14" />
+			<path d="m19 12-7 7-7-7" />
+		</svg>
+		}
+	</app-button>
+	}
+</div>

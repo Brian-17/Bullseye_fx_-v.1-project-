@@ -1,0 +1,26 @@
+2026-08-08 10:17:39.603 [info] Extension host with pid 5077 started
+2026-08-08 10:17:40.134 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-08-08 10:17:40.135 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-08-08 10:17:40.136 [info] ExtensionService#_doActivateExtension google.geminicodeassist, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-08 10:17:40.136 [info] ExtensionService#_doActivateExtension ms-toolsai.jupyter, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-08 10:17:41.491 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-08-08 10:17:41.492 [info] ExtensionService#_doActivateExtension salesforce.salesforcedx-vscode-services, startup: true, activationEvent: '*'
+2026-08-08 10:17:43.633 [info] ExtensionService#_doActivateExtension ms-python.python, startup: false, activationEvent: 'api', root cause: ms-toolsai.jupyter
+2026-08-08 10:17:44.099 [info] ExtensionService#_doActivateExtension googlecloudtools.datacloud, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-08 10:17:46.449 [info] ExtensionService#_doActivateExtension google.cloud-shell, startup: false, activationEvent: 'onCommand:cloudshell.isAuthorized'
+2026-08-08 10:17:46.626 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-08-08 10:17:46.627 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-08-08 10:17:47.712 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-08 10:17:47.712 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-08 10:17:47.713 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-08 10:17:49.440 [info] Eager extensions activated
+2026-08-08 10:17:49.586 [info] ExtensionService#_doActivateExtension EditorConfig.EditorConfig, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:49.587 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:49.590 [info] ExtensionService#_doActivateExtension google.gemini-cli-vscode-ide-companion, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:49.591 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:49.591 [info] ExtensionService#_doActivateExtension mazen-aissa.java-mcp-debugger, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:49.592 [info] ExtensionService#_doActivateExtension vadimcn.vscode-lldb, startup: false, activationEvent: 'onStartupFinished'
+2026-08-08 10:17:51.783 [info] ExtensionService#_doActivateExtension googlecloudtools.cloudcode, startup: false, activationEvent: 'onLanguage:Log'
+2026-08-08 10:17:54.881 [info] Extension host terminating: received terminate message from renderer
+2026-08-08 10:18:01.517 [error] Unable to refresh tree view cloudStorageExplorer: Canceled
+2026-08-08 10:18:03.881 [info] Extension host with pid 5077 exiting with code 0

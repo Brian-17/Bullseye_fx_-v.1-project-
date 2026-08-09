@@ -1,0 +1,5 @@
+<app-button type="submit" [disabled]="submitting() || disabled()" class="w-full">
+	@if (submitting()) {
+	<app-spinner [diameter]="16" aria-hidden="true" />
+	{{ loadingLabel() }} } @else { {{ label() }} }
+</app-button>

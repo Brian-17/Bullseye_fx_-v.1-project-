@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+/*
+ * The skeleton is a block by default so call sites only need to supply a width
+ * and height (`h-4 w-32`) — no `block` utility to repeat. The pulse lives here
+ * (rather than Tailwind's `animate-pulse`) so it can be switched off for users
+ * who ask for reduced motion.
+ */
+:host {
+	display: block;
+	animation: app-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes app-skeleton-pulse {
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:host {
+		animation: none;
+	}
+}

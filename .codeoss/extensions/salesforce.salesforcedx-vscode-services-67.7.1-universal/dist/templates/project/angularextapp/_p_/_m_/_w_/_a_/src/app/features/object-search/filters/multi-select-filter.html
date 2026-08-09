@@ -1,0 +1,10 @@
+<app-filter-field-wrapper [label]="config().label" [helpText]="config().helpText">
+	<app-select
+		multiple
+		[size]="size()"
+		[options]="config().options ?? []"
+		[placeholder]="placeholder()"
+		[values]="selected()"
+		(valuesChange)="onSelectionChange($event)"
+	/>
+</app-filter-field-wrapper>

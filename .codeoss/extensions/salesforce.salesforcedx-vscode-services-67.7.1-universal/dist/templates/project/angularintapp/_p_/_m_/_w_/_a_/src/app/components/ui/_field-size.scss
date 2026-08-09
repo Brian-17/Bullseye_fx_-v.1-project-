@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+/*
+ * Shared height scale for the form-field wrappers (app-input, app-select,
+ * app-date-picker): sm = 24px, default = 32px, lg = 40px.
+ *
+ * Material's density scale only reaches 36px at its -5 floor, so these compact
+ * heights can't come from `mat.form-field-density`. Instead we set the two M3
+ * tokens that drive the height directly:
+ *   --mat-form-field-container-height          -> `.mat-mdc-form-field-flex` min-height
+ *   --mat-form-field-container-vertical-padding -> infix padding-top / -bottom
+ *
+ * These are CSS custom properties, so setting them on the wrapper's own
+ * `mat-form-field` (an in-view element that matches under emulated
+ * encapsulation) is enough — they INHERIT down to Material's internal flex /
+ * infix elements. No `::ng-deep` and no global classes needed. This mirrors how
+ * `app-button` sizes work (it sets `--mat-button-*-container-height` tokens).
+ */
+@mixin apply($height, $vertical-padding) {
+	--mat-form-field-container-height: #{$height};
+	--mat-form-field-container-vertical-padding: #{$vertical-padding};
+}
+
+/*
+ * Emit the three size classes. Consumers opt in via `size` on the wrapper,
+ * which renders `size-sm | size-default | size-lg` on the mat-form-field.
+ */
+@mixin sizes {
+	.size-sm {
+		@include apply(1.5rem, 0.25rem); // 24px, 4px
+	}
+	.size-default {
+		@include apply(2rem, 0.5rem); // 32px, 8px
+	}
+	.size-lg {
+		@include apply(2.5rem, 0.75rem); // 40px, 12px
+	}
+}

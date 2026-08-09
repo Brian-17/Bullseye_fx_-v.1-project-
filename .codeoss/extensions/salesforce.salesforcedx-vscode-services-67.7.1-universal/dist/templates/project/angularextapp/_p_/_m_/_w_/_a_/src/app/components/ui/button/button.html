@@ -1,0 +1,18 @@
+<button
+	[matButton]="matAppearance()"
+	[class]="buttonClass()"
+	[class.destructive]="isDestructive()"
+	[type]="type()"
+	[disabled]="disabled()"
+	[attr.aria-label]="ariaLabel()"
+	[attr.aria-expanded]="ariaExpanded()"
+	(click)="clicked.emit($event)"
+>
+	@if (icon()) {
+		<mat-icon aria-hidden="true">{{ icon() }}</mat-icon>
+	}
+	<ng-content />
+	@if (iconEnd()) {
+		<mat-icon aria-hidden="true" iconPositionEnd>{{ iconEnd() }}</mat-icon>
+	}
+</button>

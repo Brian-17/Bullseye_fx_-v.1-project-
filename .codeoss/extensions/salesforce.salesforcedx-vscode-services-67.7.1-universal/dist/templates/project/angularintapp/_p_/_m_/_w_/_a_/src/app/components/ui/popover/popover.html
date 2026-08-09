@@ -1,0 +1,41 @@
+<span
+	cdkOverlayOrigin
+	#origin="cdkOverlayOrigin"
+	role="button"
+	tabindex="0"
+	[attr.aria-expanded]="open()"
+	(click)="toggle()"
+	(keydown.enter)="toggle()"
+	(keydown.space)="$event.preventDefault(); toggle()"
+>
+	<ng-content select="[trigger]" />
+</span>
+
+<ng-template
+	cdkConnectedOverlay
+	[cdkConnectedOverlayOrigin]="origin"
+	[cdkConnectedOverlayOpen]="open()"
+	[cdkConnectedOverlayHasBackdrop]="true"
+	cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+	[cdkConnectedOverlayOffsetY]="sideOffset()"
+	[cdkConnectedOverlayPositions]="[
+		{
+			originX: align(),
+			originY: 'bottom',
+			overlayX: align(),
+			overlayY: 'top',
+		},
+		{
+			originX: align(),
+			originY: 'top',
+			overlayX: align(),
+			overlayY: 'bottom',
+		},
+	]"
+	(backdropClick)="close()"
+	(detach)="close()"
+>
+	<div class="bg-white text-sm rounded-lg shadow-md ring-1 ring-black/10 outline-none">
+		<ng-content />
+	</div>
+</ng-template>

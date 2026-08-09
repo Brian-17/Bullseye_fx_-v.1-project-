@@ -1,0 +1,23 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+/*
+ * Material's `mat-divider` draws a full-height border for the vertical variant,
+ * so its element must fill the host. The host itself carries `self-stretch`
+ * (see component `hostClass`) to take the flex row's height; here we make the
+ * inner divider fill that height. Horizontal needs nothing extra — the divider
+ * is already `display:block; width:100%`.
+ */
+:host {
+	// A vertical divider is a zero-width line; keep it out of flex growth math.
+	&[data-orientation='vertical'] {
+		display: flex;
+	}
+}
+
+.mat-divider-vertical {
+	height: 100%;
+}

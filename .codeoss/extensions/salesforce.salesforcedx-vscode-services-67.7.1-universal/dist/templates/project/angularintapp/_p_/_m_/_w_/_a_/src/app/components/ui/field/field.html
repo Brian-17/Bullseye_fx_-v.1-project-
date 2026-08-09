@@ -1,0 +1,21 @@
+@if (label()) {
+	<label [attr.for]="htmlFor()" class="text-sm leading-none font-medium select-none">
+		{{ label() }}
+		@if (required()) {
+			<span aria-hidden="true" class="text-destructive">*</span>
+		}
+	</label>
+}
+
+<ng-content />
+
+@if (error()) {
+	<p
+		[id]="htmlFor() ? htmlFor() + '-error' : null"
+		data-slot="field-error"
+		role="alert"
+		class="text-destructive text-sm"
+	>
+		{{ error() }}
+	</p>
+}

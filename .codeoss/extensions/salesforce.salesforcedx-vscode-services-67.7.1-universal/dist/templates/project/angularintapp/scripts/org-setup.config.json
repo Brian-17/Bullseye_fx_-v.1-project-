@@ -1,0 +1,9 @@
+{
+  "permsetAssignments": {
+    "assignments": {
+      "angularintapp_Access": {
+        "assignee": "currentUser"
+      }
+    }
+  }
+}

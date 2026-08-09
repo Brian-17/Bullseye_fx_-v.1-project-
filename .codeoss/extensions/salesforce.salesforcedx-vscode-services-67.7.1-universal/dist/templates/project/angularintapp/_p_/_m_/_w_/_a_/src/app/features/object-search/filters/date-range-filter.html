@@ -1,0 +1,11 @@
+<app-filter-field-wrapper [label]="config().label" [helpText]="config().helpText">
+	<app-date-range-picker
+		class="w-full"
+		startPlaceholder="Start"
+		endPlaceholder="End"
+		[readonly]="true"
+		[max]="maxDate()"
+		[value]="range()"
+		(valueChange)="onRangeChange($event)"
+	/>
+</app-filter-field-wrapper>

@@ -1,0 +1,30 @@
+2026-08-07 17:42:54.593 [info] 
+
+
+
+
+2026-08-07 17:42:54.615 [info] Extension host agent started.
+2026-08-07 17:43:10.677 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] New connection established.
+2026-08-07 17:43:10.680 [info] [127.0.0.1][67680fd0][ExtensionHostConnection] New connection established.
+2026-08-07 17:43:12.540 [info] [127.0.0.1][67680fd0][ExtensionHostConnection] <1474> Launched Extension Host Process.
+2026-08-07 17:43:13.646 [info] [127.0.0.1][67680fd0][ExtensionHostConnection] <1474> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 17:43:31.391 [info] Getting Manifest... llvm-vs-code-extensions.lldb-dap
+2026-08-07 17:43:31.605 [info] Installing extension: llvm-vs-code-extensions.lldb-dap {"installPreReleaseVersion":true,"productVersion":{"version":"1.109.5-cde","date":"2026-08-02T03:06:11.806Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/bkiplangat17/.codeoss/extensions/extensions.json","external":"file:///home/bkiplangat17/.codeoss/extensions/extensions.json","path":"/home/bkiplangat17/.codeoss/extensions/extensions.json","scheme":"file"}}
+2026-08-07 17:43:32.526 [info] Extracted extension to file:///home/bkiplangat17/.codeoss/extensions/llvm-vs-code-extensions.lldb-dap-0.7.20260807-universal: llvm-vs-code-extensions.lldb-dap
+2026-08-07 17:43:32.537 [info] Renamed to /home/bkiplangat17/.codeoss/extensions/llvm-vs-code-extensions.lldb-dap-0.7.20260807-universal
+2026-08-07 17:43:32.564 [info] Marked extension as removed llvm-vs-code-extensions.lldb-dap-0.7.20260804-universal
+2026-08-07 17:43:32.578 [info] Extension installed successfully: llvm-vs-code-extensions.lldb-dap file:///home/bkiplangat17/.codeoss/extensions/extensions.json
+2026-08-07 17:44:35.160 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2026-08-07 17:44:51.880 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2026-08-07 17:44:51.881 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] The client has reconnected.
+2026-08-07 17:45:00.682 [info] [127.0.0.1][67680fd0][ExtensionHostConnection] The client has reconnected.
+2026-08-07 17:51:45.703 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2026-08-07 18:07:05.057 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2026-08-07 18:07:05.059 [info] [127.0.0.1][6e429f9a][ExtensionHostConnection] New connection established.
+2026-08-07 18:07:05.060 [info] [127.0.0.1][c11ae1a3][ManagementConnection] New connection established.
+2026-08-07 18:07:05.069 [info] [127.0.0.1][6e429f9a][ExtensionHostConnection] <2922> Launched Extension Host Process.
+2026-08-07 18:07:05.683 [info] [127.0.0.1][6e429f9a][ExtensionHostConnection] <2922> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 18:12:05.420 [info] [127.0.0.1][8a2fc5a8][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2026-08-07 18:12:05.833 [info] [127.0.0.1][67680fd0][ExtensionHostConnection] <1474> Extension Host Process exited with code: 0, signal: null.

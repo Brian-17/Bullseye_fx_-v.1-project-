@@ -1,0 +1,12 @@
+<app-filter-field-wrapper
+	[label]="config().label"
+	[htmlFor]="inputId()"
+	[helpText]="config().helpText"
+>
+	<app-select
+		[placeholder]="'Select ' + config().label.toLowerCase()"
+		[options]="options()"
+		[value]="currentValue()"
+		(valueChange)="onValueChange($event)"
+	/>
+</app-filter-field-wrapper>

@@ -1,0 +1,17 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+// Material lays the button's projected content out inside `.mdc-button__label`.
+// Make it a flex row so the spinner and the loading label sit on the same line,
+// vertically centred. Scoped under `:host` (via `::ng-deep`) so the override
+// only reaches this submit button's inner `matButton`, never other buttons.
+:host ::ng-deep .mdc-button__label {
+	display: flex;
+
+	> app-spinner {
+		margin: auto 1rem;
+	}
+}

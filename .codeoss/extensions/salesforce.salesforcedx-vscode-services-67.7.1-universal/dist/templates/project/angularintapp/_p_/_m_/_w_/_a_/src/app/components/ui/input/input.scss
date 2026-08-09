@@ -1,0 +1,35 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+@use '../field-size' as field-size;
+
+/*
+ * Form-field-specific structural styling. Height comes from the `size` input
+ * (see field-size.scss); colour comes from the --mat-sys-* remap (styles.css).
+ * Here we only: give the outline our design-token radius, emit the size
+ * classes, and collapse the empty hint/error subscript row.
+ */
+@include field-size.sizes;
+
+:host {
+	display: block;
+	/*
+	 * Allow the host to shrink below the mat-form-field's intrinsic width when
+	 * used as a flex item (e.g. two side-by-side inputs in a numeric/date
+	 * range). Without this, the default `min-width: auto` on a flex item keeps
+	 * each field at its content width and the row overflows its container.
+	 */
+	min-width: 0;
+}
+
+.mat-mdc-form-field {
+	--mdc-outlined-text-field-container-shape: var(--radius-md);
+	font-size: 0.875rem; /* text-sm, matches the React inputs */
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+	display: none;
+}

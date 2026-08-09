@@ -1,0 +1,26 @@
+@if (loading()) {
+<app-skeleton class="size-8 rounded-full" />
+} @else {
+<button matIconButton [matMenuTriggerFor]="menu" aria-label="User menu">
+	<mat-icon>person</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu" xPosition="before">
+	@if (isAuthenticated()) {
+	<div class="px-3 py-2 font-medium truncate">{{ user()?.name }}</div>
+	<hr />
+	<a mat-menu-item [routerLink]="routes.PROFILE.PATH">Edit Profile</a>
+	<ng-content select="[menuItems]" />
+	<button mat-menu-item type="button" (click)="onLogout()">Sign Out</button>
+	} @else {
+	<a mat-menu-item [routerLink]="routes.LOGIN.PATH">
+		<mat-icon>login</mat-icon>
+		<span>Log In</span>
+	</a>
+	<a mat-menu-item [routerLink]="routes.REGISTER.PATH">
+		<mat-icon>person_add</mat-icon>
+		<span>Register</span>
+	</a>
+	}
+</mat-menu>
+}

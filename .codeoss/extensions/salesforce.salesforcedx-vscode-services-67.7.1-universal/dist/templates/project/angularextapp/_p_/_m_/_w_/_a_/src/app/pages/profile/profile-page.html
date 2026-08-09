@@ -1,0 +1,116 @@
+<main class="flex min-h-svh w-full justify-center p-6 md:p-10 items-start">
+	<div class="w-full max-w-md">
+		@if (loadError()) {
+		<app-status-alert variant="error" [message]="loadError()!" />
+		} @else {
+		<app-auth-form
+			title="Profile"
+			description="Update your account information"
+			[showAlreadyLoggedIn]="false"
+			[error]="submitError()"
+			[success]="success() ? 'Profile updated!' : null"
+			submitText="Save Changes"
+			submitLoadingText="Saving…"
+			[submitting]="submitting()"
+			[submitDisabled]="loading()"
+			[footer]="{ link: routes.CHANGE_PASSWORD.PATH, linkText: 'Change password' }"
+			(submitted)="onSubmit()"
+		>
+			@if (loading()) {
+			<div role="status" aria-live="polite">
+				<span class="sr-only">Loading profile…</span>
+				<app-field label="Email"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field label="First name"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+					<app-field label="Last name"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				</div>
+				<app-field label="Phone"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				<app-field label="Street"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field label="City"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+					<app-field label="State"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				</div>
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field label="Postal Code"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+					<app-field label="Country"><app-skeleton class="h-9 w-full rounded-md" /></app-field>
+				</div>
+			</div>
+			} @else {
+			<div class="mt-4 flex flex-col gap-4">
+				<app-field label="Email" htmlFor="profile-email" [error]="controlError('Email', 'email')">
+					<app-input type="email" [value]="form.controls.Email.value ?? ''" [disabled]="true" />
+				</app-field>
+
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field
+						label="First name"
+						htmlFor="profile-first-name"
+						[error]="controlError('FirstName', 'required')"
+					>
+						<app-input
+							[value]="form.controls.FirstName.value ?? ''"
+							(valueChange)="setControl('FirstName', $event)"
+						/>
+					</app-field>
+					<app-field
+						label="Last name"
+						htmlFor="profile-last-name"
+						[error]="controlError('LastName', 'required')"
+					>
+						<app-input
+							[value]="form.controls.LastName.value ?? ''"
+							(valueChange)="setControl('LastName', $event)"
+						/>
+					</app-field>
+				</div>
+
+				<app-field label="Phone" htmlFor="profile-phone">
+					<app-input
+						type="tel"
+						[value]="form.controls.Phone.value ?? ''"
+						(valueChange)="setControl('Phone', $event)"
+					/>
+				</app-field>
+
+				<app-field label="Street" htmlFor="profile-street">
+					<app-input
+						[value]="form.controls.Street.value ?? ''"
+						(valueChange)="setControl('Street', $event)"
+					/>
+				</app-field>
+
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field label="City" htmlFor="profile-city">
+						<app-input
+							[value]="form.controls.City.value ?? ''"
+							(valueChange)="setControl('City', $event)"
+						/>
+					</app-field>
+					<app-field label="State" htmlFor="profile-state">
+						<app-input
+							[value]="form.controls.State.value ?? ''"
+							(valueChange)="setControl('State', $event)"
+						/>
+					</app-field>
+				</div>
+
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field label="Postal Code" htmlFor="profile-postal-code">
+						<app-input
+							[value]="form.controls.PostalCode.value ?? ''"
+							(valueChange)="setControl('PostalCode', $event)"
+						/>
+					</app-field>
+					<app-field label="Country" htmlFor="profile-country">
+						<app-input
+							[value]="form.controls.Country.value ?? ''"
+							(valueChange)="setControl('Country', $event)"
+						/>
+					</app-field>
+				</div>
+			</div>
+			}
+		</app-auth-form>
+		}
+	</div>
+</main>

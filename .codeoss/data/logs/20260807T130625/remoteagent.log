@@ -1,0 +1,52 @@
+2026-08-07 13:06:25.895 [info] 
+
+
+
+
+2026-08-07 13:06:25.922 [info] Extension host agent started.
+2026-08-07 13:06:37.842 [info] [127.0.0.1][29e7b8b8][ManagementConnection] New connection established.
+2026-08-07 13:06:37.862 [info] [127.0.0.1][6a3f43b3][ExtensionHostConnection] New connection established.
+2026-08-07 13:06:39.850 [info] [127.0.0.1][6a3f43b3][ExtensionHostConnection] <1506> Launched Extension Host Process.
+2026-08-07 13:06:40.913 [info] [127.0.0.1][6a3f43b3][ExtensionHostConnection] <1506> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 13:07:38.868 [info] Installing extension: vadimcn.vscode-lldb {"installGivenVersion":true,"pinned":false,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/bkiplangat17/.codeoss/extensions/extensions.json","external":"file:///home/bkiplangat17/.codeoss/extensions/extensions.json","path":"/home/bkiplangat17/.codeoss/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.109.5-cde","date":"2026-08-02T03:06:11.806Z"}}
+2026-08-07 13:07:39.228 [info] Deleted existing extension from disk vadimcn.vscode-lldb /home/bkiplangat17/.codeoss/extensions/vadimcn.vscode-lldb-1.12.2-universal
+2026-08-07 13:07:42.905 [info] Extracted extension to file:///home/bkiplangat17/.codeoss/extensions/vadimcn.vscode-lldb-1.12.2: vadimcn.vscode-lldb
+2026-08-07 13:07:43.114 [info] Renamed to /home/bkiplangat17/.codeoss/extensions/vadimcn.vscode-lldb-1.12.2
+2026-08-07 13:07:43.160 [info] Extension installed successfully: vadimcn.vscode-lldb file:///home/bkiplangat17/.codeoss/extensions/extensions.json
+2026-08-07 13:19:11.913 [info] [127.0.0.1][29e7b8b8][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2026-08-07 13:23:42.177 [info] [127.0.0.1][29e7b8b8][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2026-08-07 13:23:42.178 [info] [127.0.0.1][563343b5][ManagementConnection] New connection established.
+2026-08-07 13:23:42.238 [info] [127.0.0.1][462307eb][ExtensionHostConnection] New connection established.
+2026-08-07 13:23:42.243 [info] [127.0.0.1][462307eb][ExtensionHostConnection] <2306> Launched Extension Host Process.
+2026-08-07 13:23:42.863 [info] [127.0.0.1][462307eb][ExtensionHostConnection] <2306> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 13:25:19.085 [info] [127.0.0.1][563343b5][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2026-08-07 13:28:42.310 [info] [127.0.0.1][29e7b8b8][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2026-08-07 13:28:42.865 [info] [127.0.0.1][6a3f43b3][ExtensionHostConnection] <1506> Extension Host Process exited with code: 0, signal: null.
+2026-08-07 13:34:47.627 [info] [127.0.0.1][563343b5][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2026-08-07 13:34:47.628 [info] [127.0.0.1][ed149500][ManagementConnection] New connection established.
+2026-08-07 13:34:47.636 [info] [127.0.0.1][56ba521a][ExtensionHostConnection] New connection established.
+2026-08-07 13:34:47.643 [info] [127.0.0.1][56ba521a][ExtensionHostConnection] <2775> Launched Extension Host Process.
+2026-08-07 13:34:48.096 [info] [127.0.0.1][56ba521a][ExtensionHostConnection] <2775> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 13:39:47.829 [info] [127.0.0.1][462307eb][ExtensionHostConnection] <2306> Extension Host Process exited with code: 0, signal: null.
+2026-08-07 13:39:48.539 [info] [127.0.0.1][563343b5][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2026-08-07 13:41:11.267 [info] [127.0.0.1][ed149500][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2026-08-07 13:47:38.641 [info] [127.0.0.1][ed149500][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2026-08-07 13:47:38.643 [info] [127.0.0.1][6a3c86c6][ManagementConnection] New connection established.
+2026-08-07 13:47:38.645 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] New connection established.
+2026-08-07 13:47:38.655 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] <7659> Launched Extension Host Process.
+2026-08-07 13:47:39.420 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] <7659> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-07 13:52:39.002 [info] [127.0.0.1][ed149500][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2026-08-07 13:52:40.094 [info] [127.0.0.1][56ba521a][ExtensionHostConnection] <2775> Extension Host Process exited with code: 0, signal: null.
+2026-08-07 14:05:28.630 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] The client has reconnected.
+2026-08-07 14:05:28.634 [info] [127.0.0.1][6a3c86c6][ManagementConnection] The client has reconnected.
+2026-08-07 14:12:24.257 [info] [127.0.0.1][6a3c86c6][ManagementConnection] The client has reconnected.
+2026-08-07 14:12:24.267 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] The client has reconnected.
+2026-08-07 14:36:32.899 [info] [127.0.0.1][6a3c86c6][ManagementConnection] The client has reconnected.
+2026-08-07 14:36:32.960 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] The client has reconnected.
+2026-08-07 15:04:32.528 [info] [127.0.0.1][6a3c86c6][ManagementConnection] The client has reconnected.
+2026-08-07 15:04:32.537 [info] [127.0.0.1][15976f4f][ExtensionHostConnection] The client has reconnected.
+2026-08-07 15:25:03.182 [info] [127.0.0.1][6a3c86c6][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...

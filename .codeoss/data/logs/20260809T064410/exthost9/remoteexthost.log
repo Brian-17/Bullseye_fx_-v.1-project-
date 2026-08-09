@@ -1,0 +1,39 @@
+2026-08-09 10:58:02.194 [info] Extension host with pid 12944 started
+2026-08-09 10:58:03.677 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-08-09 10:58:03.679 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-08-09 10:58:03.679 [info] ExtensionService#_doActivateExtension google.geminicodeassist, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-09 10:58:03.679 [info] ExtensionService#_doActivateExtension ms-toolsai.jupyter, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-09 10:58:05.216 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-08-09 10:58:05.217 [info] ExtensionService#_doActivateExtension salesforce.salesforcedx-vscode-services, startup: true, activationEvent: '*'
+2026-08-09 10:58:07.673 [info] ExtensionService#_doActivateExtension ms-python.python, startup: false, activationEvent: 'api', root cause: ms-toolsai.jupyter
+2026-08-09 10:58:08.177 [info] ExtensionService#_doActivateExtension googlecloudtools.datacloud, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-08-09 10:58:11.152 [info] ExtensionService#_doActivateExtension google.cloud-shell, startup: false, activationEvent: 'onCommand:cloudshell.isAuthorized'
+2026-08-09 10:58:11.393 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-08-09 10:58:11.395 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-08-09 10:58:12.591 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-09 10:58:12.592 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-09 10:58:12.592 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-08-09 10:58:13.363 [info] Eager extensions activated
+2026-08-09 10:58:13.364 [info] ExtensionService#_doActivateExtension EditorConfig.EditorConfig, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:13.364 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:13.366 [info] ExtensionService#_doActivateExtension google.gemini-cli-vscode-ide-companion, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:13.367 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:13.367 [info] ExtensionService#_doActivateExtension mazen-aissa.java-mcp-debugger, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:13.368 [info] ExtensionService#_doActivateExtension vadimcn.vscode-lldb, startup: false, activationEvent: 'onStartupFinished'
+2026-08-09 10:58:16.497 [info] ExtensionService#_doActivateExtension googlecloudtools.cloudcode, startup: false, activationEvent: 'onLanguage:Log'
+2026-08-09 10:58:24.784 [error] Error: Error in property 'label': Expected string, but got object
+    at OG.validateOrThrow (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:129:297)
+    at a (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:129:4224)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at processTimers (node:internal/timers:523:7)
+2026-08-09 10:58:34.082 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-08-09 11:57:03.955 [info] Extension host terminating: renderer disconnected for too long (2)
+2026-08-09 11:57:05.184 [error] Error: Channel has been closed
+    at n (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:3001)
+    at Object.info (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:3346)
+    at T.info (/google/devshell/editor/code-oss-for-cloud-shell/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:45267)
+    at ChildProcess.<anonymous> (/google/devshell/editor/code-oss-for-cloud-shell/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:606637)
+    at ChildProcess.emit (node:events:519:28)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-08-09 11:57:05.235 [info] Extension host with pid 12944 exiting with code 0

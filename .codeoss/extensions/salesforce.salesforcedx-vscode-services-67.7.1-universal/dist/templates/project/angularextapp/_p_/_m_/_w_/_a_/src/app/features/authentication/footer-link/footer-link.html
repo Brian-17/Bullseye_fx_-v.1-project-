@@ -1,0 +1,9 @@
+<p class="w-full text-center text-sm text-muted-foreground">
+	@if (text()) { {{ text() }}&nbsp; }
+	<a
+		[routerLink]="to()"
+		class="font-medium underline hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+	>
+		{{ linkText() }}
+	</a>
+</p>

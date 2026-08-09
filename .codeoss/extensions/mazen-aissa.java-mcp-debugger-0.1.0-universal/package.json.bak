@@ -1,0 +1,53 @@
+{
+  "name": "java-debugger-mcp",
+  "displayName": "Java MCP Debugger",
+  "description": "Java MCP Debugger: expose Java debugging as Model Context Protocol tools in VS Code and Cursor",
+  "version": "0.1.0",
+  "publisher": "mazen-aissa",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Debuggers"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "javaDebugMcp",
+        "label": "Java MCP Debugger"
+      }
+    ],
+    "configuration": {
+      "title": "Java MCP Debugger",
+      "properties": {
+        "mcpJavaDebugger.port": {
+          "type": "number",
+          "default": 18990,
+          "description": "HTTP port for the embedded MCP server"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "lint": "tsc --noEmit",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.99.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.0"
+  }
+}

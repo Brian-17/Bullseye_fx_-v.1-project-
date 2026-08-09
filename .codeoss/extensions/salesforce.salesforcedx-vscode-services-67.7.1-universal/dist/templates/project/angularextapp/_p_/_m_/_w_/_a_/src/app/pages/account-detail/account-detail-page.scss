@@ -1,0 +1,7 @@
+:host ::ng-deep .mat-expansion-panel {
+	box-shadow: none !important;
+}
+
+:host ::ng-deep .mat-expansion-panel-header:hover {
+	background-color: transparent !important;
+}

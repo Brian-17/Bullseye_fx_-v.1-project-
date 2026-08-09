@@ -1,0 +1,47 @@
+<main class="flex min-h-svh w-full justify-center p-6 md:p-10 items-start">
+	<div class="w-full max-w-md">
+		<app-auth-form
+			title="Login"
+			description="Enter your email below to login to your account"
+			[error]="submitError()"
+			submitText="Login"
+			submitLoadingText="Logging in…"
+			[submitting]="submitting()"
+			[footer]="{
+				text: 'Don\'t have an account?',
+				link: routes.REGISTER.PATH,
+				linkText: 'Sign up',
+			}"
+			(submitted)="onSubmit()"
+		>
+			<div class="mt-4 flex flex-col gap-4">
+				<app-field label="Email" htmlFor="login-email" [error]="controlError('email', 'email')">
+					<app-input
+						type="email"
+						[value]="form.controls.email.value ?? ''"
+						(valueChange)="setControl('email', $event)"
+						[placeholder]="placeholders.EMAIL"
+					/>
+				</app-field>
+
+				<app-field
+					label="Password"
+					htmlFor="login-password"
+					[error]="controlError('password', 'required')"
+				>
+					<app-input
+						type="password"
+						[value]="form.controls.password.value ?? ''"
+						(valueChange)="setControl('password', $event)"
+					/>
+					<a
+						[routerLink]="routes.FORGOT_PASSWORD.PATH"
+						class="text-sm underline-offset-4 hover:underline"
+					>
+						Forgot your password?
+					</a>
+				</app-field>
+			</div>
+		</app-auth-form>
+	</div>
+</main>

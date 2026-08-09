@@ -1,0 +1,25 @@
+2026-08-08 02:38:46.040 [info] 
+
+
+
+
+2026-08-08 02:38:46.064 [info] Extension host agent started.
+2026-08-08 02:38:46.248 [info] Deleted marked for removal extension from disk llvm-vs-code-extensions.lldb-dap /home/bkiplangat17/.codeoss/extensions/llvm-vs-code-extensions.lldb-dap-0.7.20260804-universal
+2026-08-08 02:38:56.803 [info] [127.0.0.1][c0cb728a][ManagementConnection] New connection established.
+2026-08-08 02:38:56.804 [info] [127.0.0.1][2189ff05][ExtensionHostConnection] New connection established.
+2026-08-08 02:38:57.923 [info] [127.0.0.1][2189ff05][ExtensionHostConnection] <1472> Launched Extension Host Process.
+2026-08-08 02:38:58.708 [info] [127.0.0.1][2189ff05][ExtensionHostConnection] <1472> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-08 02:41:02.635 [info] [127.0.0.1][c0cb728a][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2026-08-08 02:41:03.258 [info] [127.0.0.1][2189ff05][ExtensionHostConnection] <1472> Extension Host Process exited with code: 0, signal: null.
+2026-08-08 02:41:10.753 [info] [127.0.0.1][735163d5][ManagementConnection] New connection established.
+2026-08-08 02:41:10.763 [info] [127.0.0.1][6db90eb0][ExtensionHostConnection] New connection established.
+2026-08-08 02:41:10.767 [info] [127.0.0.1][6db90eb0][ExtensionHostConnection] <2893> Launched Extension Host Process.
+2026-08-08 02:41:11.101 [info] [127.0.0.1][6db90eb0][ExtensionHostConnection] <2893> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
+
+2026-08-08 02:41:11.874 [error] [File Watcher (node.js)] Error: ENOTDIR: not a directory, stat '/home/bkiplangat17/Bullseye_fx_-v.1-project-/.vscode'
+2026-08-08 02:41:11.875 [error] [File Watcher (node.js)] Error: ENOTDIR: not a directory, stat '/home/bkiplangat17/Bullseye_fx_-v.1-project-/.vscode/settings.json'
+2026-08-08 02:41:11.875 [error] [File Watcher (node.js)] Error: ENOTDIR: not a directory, stat '/home/bkiplangat17/Bullseye_fx_-v.1-project-/.vscode/tasks.json'
+2026-08-08 02:41:11.875 [error] [File Watcher (node.js)] Error: ENOTDIR: not a directory, stat '/home/bkiplangat17/Bullseye_fx_-v.1-project-/.vscode/launch.json'
+2026-08-08 02:41:11.876 [error] [File Watcher (node.js)] Error: ENOTDIR: not a directory, stat '/home/bkiplangat17/Bullseye_fx_-v.1-project-/.vscode/mcp.json'
+2026-08-08 02:49:33.478 [info] [127.0.0.1][735163d5][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...

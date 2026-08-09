@@ -1,0 +1,24 @@
+<mat-form-field
+	class="w-full"
+	[class]="'size-' + size()"
+	[appearance]="appearance()"
+	subscriptSizing="dynamic"
+>
+	@if (label()) {
+		<mat-label>{{ label() }}</mat-label>
+	}
+	<mat-select
+		[multiple]="multiple()"
+		[placeholder]="placeholder()"
+		[disabled]="disabled()"
+		[ngModel]="selection()"
+		(ngModelChange)="onSelectionChange($event)"
+	>
+		@if (multiple()) {
+			<mat-select-trigger>{{ multiTriggerLabel() }}</mat-select-trigger>
+		}
+		@for (option of options(); track option.value) {
+			<mat-option [value]="option.value">{{ option.label }}</mat-option>
+		}
+	</mat-select>
+</mat-form-field>

@@ -1,0 +1,20 @@
+commit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	deleted:    backend/app/routes/__pycache__/dashboard.cpython-312.pyc
+#	modified:   backend/app/routes/__pycache__/trades.cpython-312.pyc
+#	modified:   backend/app/routes/trades.py
+#	deleted:    backend/app/schemas/__pycache__/dashboard.cpython-312.pyc
+#	modified:   backend/app/schemas/__pycache__/trade.cpython-312.pyc
+#	modified:   backend/app/services/__pycache__/auth_crud.cpython-312.pyc
+#	deleted:    backend/app/services/__pycache__/dashboard_service.cpython-312.pyc
+#	deleted:    backend/app/services/__pycache__/trade_crud.cpython-312.pyc
+#	modified:   backend/app/services/auth_crud.py
+#	new file:   backend/app/services/auth_crud.py.backup
+#	deleted:    backend/app/utils/__pycache__/auth.cpython-312.pyc
+#

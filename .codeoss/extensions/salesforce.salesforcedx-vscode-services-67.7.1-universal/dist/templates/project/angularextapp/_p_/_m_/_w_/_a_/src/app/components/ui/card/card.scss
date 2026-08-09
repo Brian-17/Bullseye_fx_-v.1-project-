@@ -1,0 +1,34 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+// `size="sm"` — compact padding. Material hardcodes the card's 16px padding
+// (there is no padding design token to override), so the compact size tightens
+// the real Material padding classes. `::ng-deep` is required because the slot
+// content (`mat-card-header/content/actions`) is projected — it lives in the
+// consumer's view, not this wrapper's — so a plain scoped selector can't reach
+// it. The rules are anchored under `.app-card-sm`, a class only this component
+// applies, so the deep selector stays contained to compact cards.
+.app-card-sm {
+	::ng-deep .mat-mdc-card-header {
+		padding: 0.75rem 0.75rem 0;
+	}
+
+	::ng-deep .mat-mdc-card-content {
+		padding: 0 0.75rem;
+
+		&:first-child {
+			padding-top: 0.75rem;
+		}
+
+		&:last-child {
+			padding-bottom: 0.75rem;
+		}
+	}
+
+	::ng-deep .mat-mdc-card-actions {
+		padding: 0.75rem;
+	}
+}

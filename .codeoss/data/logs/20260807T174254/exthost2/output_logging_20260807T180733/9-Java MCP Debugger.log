@@ -1,0 +1,2 @@
+[2026-08-07T18:07:51.481Z] Activating Java MCP Debugger extension
+[2026-08-07T18:07:51.612Z] Failed to start MCP server: listen EADDRINUSE: address already in use 127.0.0.1:18990

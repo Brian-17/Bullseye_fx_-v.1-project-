@@ -1,0 +1,16 @@
+<div class="p-4">
+	<app-card class="w-full">
+		@if (title() || subtitle()) {
+		<app-card-header>
+			@if (title()) {
+			<app-card-title>{{ title() }}</app-card-title>
+			} @if (subtitle()) {
+			<app-card-description>{{ subtitle() }}</app-card-description>
+			}
+		</app-card-header>
+		}
+		<app-card-content>
+			<ng-content />
+		</app-card-content>
+	</app-card>
+</div>

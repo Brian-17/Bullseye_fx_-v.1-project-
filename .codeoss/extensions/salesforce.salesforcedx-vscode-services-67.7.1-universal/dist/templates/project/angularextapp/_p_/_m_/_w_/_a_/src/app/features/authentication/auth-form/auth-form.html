@@ -1,0 +1,34 @@
+<app-card-layout [title]="title()" [subtitle]="description()">
+	<div class="space-y-6">
+		@if (showAuthAlert()) {
+		<app-status-alert variant="info" message="You are already logged in." />
+		} @if (errorMessages().length > 0) { @if (errorMessages().length === 1) {
+		<app-status-alert variant="error" [message]="errorMessages()[0]" />
+		} @else {
+		<app-status-alert variant="error">
+			<ul>
+				@for (msg of errorMessages(); track msg) {
+				<li>{{ msg }}</li>
+				}
+			</ul>
+		</app-status-alert>
+		} } @if (success()) {
+		<app-status-alert variant="success" [message]="success()!" />
+		}
+
+		<form (ngSubmit)="onSubmit()">
+			<ng-content />
+			<app-submit-button
+				class="mt-6 block"
+				[label]="submitText()"
+				[loadingLabel]="submitLoadingText()"
+				[submitting]="submitting()"
+				[disabled]="isSubmitDisabled()"
+			/>
+		</form>
+
+		@if (footer(); as f) {
+		<app-footer-link [text]="f.text ?? ''" [to]="f.link" [linkText]="f.linkText" />
+		}
+	</div>
+</app-card-layout>

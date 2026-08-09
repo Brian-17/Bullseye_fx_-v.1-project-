@@ -1,0 +1,5 @@
+<app-alert [title]="title()" [class]="toneClass()">
+	@if (message()) { {{ message() }} } @else {
+	<ng-content />
+	}
+</app-alert>

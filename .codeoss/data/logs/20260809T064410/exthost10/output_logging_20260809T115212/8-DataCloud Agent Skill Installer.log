@@ -1,0 +1,12 @@
+[2026-08-09T11:52:25.793Z] Activating Agent Skill Installer
+[2026-08-09T11:52:25.809Z] appName: Code OSS for Cloud Shell, ideType: 6
+[2026-08-09T11:52:25.809Z] Profile antigravity-ide is NOT active
+[2026-08-09T11:52:25.809Z] Profile antigravity is NOT active
+[2026-08-09T11:52:25.809Z] Profile jetski is NOT active
+[2026-08-09T11:52:25.809Z] Profile cursor is NOT active
+[2026-08-09T11:52:25.809Z] Profile copilot is NOT active
+[2026-08-09T11:52:25.809Z] Profile gemini-code-assist is active
+[2026-08-09T11:52:42.330Z] Checking skills for Gemini Code Assist in /home/bkiplangat17/.gemini/skills. Force=false
+[2026-08-09T11:52:42.348Z] Bundle checksum match. Skipping installation.
+[2026-08-09T11:52:42.349Z] Syncing telemetry hooks for gemini-code-assist. Telemetry enabled: true
+[2026-08-09T11:52:42.412Z] Hook plugin for gemini-code-assist installed successfully to /home/bkiplangat17/.gemini/config/plugins/googlecloudtools.datacloud_telemetry

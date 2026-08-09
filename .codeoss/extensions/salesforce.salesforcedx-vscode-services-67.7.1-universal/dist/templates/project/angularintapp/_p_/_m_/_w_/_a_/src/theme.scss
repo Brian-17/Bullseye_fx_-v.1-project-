@@ -1,0 +1,39 @@
+// Copyright (c) 2026, Salesforce, Inc.,
+// All rights reserved.
+// For full license text, see the LICENSE.txt file
+
+// Angular Material M3 theme.
+// See https://material.angular.dev/guide/theming.
+//
+// This replaces the prebuilt azure-blue theme so we can set a negative
+// `density` — the standard, system-driven way to get the compact control
+// heights the React reference uses (no hardcoded pixel heights anywhere).
+//
+// Colour is intentionally NOT finalised here: the shadcn design tokens are
+// applied on top by remapping `--mat-sys-*` in styles.css, which loads after
+// this file. The palette below only seeds Material's base system variables.
+@use '@angular/material' as mat;
+
+html {
+	@include mat.theme(
+		(
+			color: (
+				theme-type: light,
+				primary: mat.$azure-palette,
+				tertiary: mat.$blue-palette,
+			),
+			// Font family reads Tailwind's system stack (`--font-sans`, the same
+			// default the React reference uses) instead of Material's Roboto, so
+			// Material components and Tailwind-styled text share one font. Tailwind
+			// is the single source of the family; the typescale sizes/weights stay
+			// Material's own.
+			typography: (
+					plain-family: var(--font-sans),
+					brand-family: var(--font-sans),
+				),
+			// Compact density (scale 0 to -5). Drives control heights via
+			// Material's own tokens instead of hardcoded px.
+			density: -2,
+		)
+	);
+}

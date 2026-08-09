@@ -1,0 +1,31 @@
+@if (icon()) {
+	<mat-icon class="row-span-2 translate-y-0.5 !size-4 !text-base leading-4" aria-hidden="true">{{
+		icon()
+	}}</mat-icon>
+}
+
+@if (title()) {
+	<div data-slot="alert-title" class="col-start-2 font-medium">{{ title() }}</div>
+}
+@if (description()) {
+	<div
+		data-slot="alert-description"
+		class="col-start-2 text-sm"
+		[class.text-muted-foreground]="variant() === 'default'"
+		[class.text-destructive]="variant() === 'destructive'"
+	>
+		{{ description() }}
+	</div>
+}
+
+<!--
+	Default slot for callers that project body content (e.g. app-status-alert
+	composing a message with a link) instead of the `description` input. Sits in
+	the second grid column to align with the icon. Inert when only inputs are used.
+-->
+<div class="col-start-2 text-sm">
+	<ng-content />
+</div>
+
+<!-- Optional caller-owned trailing control, pinned top-right. -->
+<ng-content select="app-alert-action" />

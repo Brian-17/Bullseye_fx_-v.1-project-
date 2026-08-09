@@ -1,0 +1,80 @@
+<main class="flex min-h-svh w-full justify-center p-6 md:p-10 items-start">
+	<div class="w-full max-w-2xl">
+		<app-auth-form
+			title="Sign Up"
+			description="Enter your information to create an account"
+			[error]="submitError()"
+			submitText="Create an account"
+			submitLoadingText="Creating account…"
+			[submitting]="submitting()"
+			[footer]="{ text: 'Already have an account?', link: routes.LOGIN.PATH, linkText: 'Sign in' }"
+			(submitted)="onSubmit()"
+		>
+			<div class="mt-4 flex flex-col gap-4">
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start">
+					<app-field
+						label="First name"
+						htmlFor="register-first-name"
+						[error]="controlError('firstName', 'required')"
+					>
+						<app-input
+							[value]="form.controls.firstName.value ?? ''"
+							(valueChange)="setControl('firstName', $event)"
+							[placeholder]="placeholders.FIRST_NAME"
+						/>
+					</app-field>
+
+					<app-field
+						label="Last name"
+						htmlFor="register-last-name"
+						[error]="controlError('lastName', 'required')"
+					>
+						<app-input
+							[value]="form.controls.lastName.value ?? ''"
+							(valueChange)="setControl('lastName', $event)"
+							[placeholder]="placeholders.LAST_NAME"
+						/>
+					</app-field>
+				</div>
+
+				<app-field label="Email" htmlFor="register-email" [error]="controlError('email', 'email')">
+					<app-input
+						type="email"
+						[value]="form.controls.email.value ?? ''"
+						(valueChange)="setControl('email', $event)"
+						[placeholder]="placeholders.EMAIL"
+					/>
+				</app-field>
+
+				<app-field
+					label="Password"
+					htmlFor="register-password"
+					[error]="controlError('password', 'password')"
+				>
+					<app-input
+						type="password"
+						[value]="form.controls.password.value ?? ''"
+						(valueChange)="setControl('password', $event)"
+						[placeholder]="placeholders.PASSWORD_CREATE"
+					/>
+				</app-field>
+
+				<app-field
+					label="Confirm Password"
+					htmlFor="register-confirm-password"
+					[error]="
+						controlError('confirmPassword', 'passwordMismatch') ??
+						controlError('confirmPassword', 'required')
+					"
+				>
+					<app-input
+						type="password"
+						[value]="form.controls.confirmPassword.value ?? ''"
+						(valueChange)="setControl('confirmPassword', $event)"
+						[placeholder]="placeholders.PASSWORD_CONFIRM"
+					/>
+				</app-field>
+			</div>
+		</app-auth-form>
+	</div>
+</main>

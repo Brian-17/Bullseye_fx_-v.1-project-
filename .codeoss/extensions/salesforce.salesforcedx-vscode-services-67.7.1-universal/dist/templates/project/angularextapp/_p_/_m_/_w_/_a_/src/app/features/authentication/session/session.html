@@ -1,0 +1,55 @@
+@if (showWarningModal()) {
+<app-dialog [open]="true" [closeOnBackdrop]="false">
+	<div
+		class="max-w-md"
+		role="alertdialog"
+		aria-labelledby="session-warning-title"
+		aria-describedby="session-warning-description"
+	>
+		<h2 id="session-warning-title" class="text-lg font-semibold">
+			{{ labels.sessionWarningTitle }}
+		</h2>
+		<p id="session-warning-description" class="text-sm text-muted-foreground mt-1">
+			{{ labels.sessionWarningMessage }}
+		</p>
+
+		<div class="flex flex-col items-center gap-4 py-6">
+			<time
+				[attr.datetime]="isoTime()"
+				role="timer"
+				aria-live="off"
+				aria-atomic="true"
+				aria-describedby="session-warning-description"
+				class="text-5xl font-bold text-center tabular-nums text-destructive"
+			>
+				{{ formattedTime() }}
+			</time>
+		</div>
+
+		<div class="flex gap-4 justify-end">
+			<app-button variant="outlined" (clicked)="onLogoutClick()">
+				{{ labels.logoutButton }}
+			</app-button>
+			<app-button variant="filled" (clicked)="onContinue()">
+				{{ labels.continueButton }}
+			</app-button>
+		</div>
+	</div>
+</app-dialog>
+} @if (showExpiredAlert()) {
+<div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+	<app-status-alert
+		variant="error"
+		[title]="labels.sessionWarningTitle"
+		[message]="labels.invalidSessionMessage"
+	/>
+	<button
+		type="button"
+		class="sr-only"
+		[attr.aria-label]="labels.closeLabel"
+		(click)="onDismissAlert()"
+	>
+		{{ labels.closeLabel }}
+	</button>
+</div>
+}

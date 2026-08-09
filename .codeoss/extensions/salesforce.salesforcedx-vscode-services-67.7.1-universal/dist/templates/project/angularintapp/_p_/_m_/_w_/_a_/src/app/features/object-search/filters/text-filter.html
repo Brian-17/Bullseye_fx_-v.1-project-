@@ -1,0 +1,12 @@
+<app-filter-field-wrapper
+	[label]="config().label"
+	[htmlFor]="inputId()"
+	[helpText]="config().helpText"
+>
+	<app-input
+		type="text"
+		[placeholder]="config().placeholder ?? 'Filter by ' + config().label.toLowerCase() + '...'"
+		[value]="localValue()"
+		(valueChange)="onValueChange($event)"
+	/>
+</app-filter-field-wrapper>

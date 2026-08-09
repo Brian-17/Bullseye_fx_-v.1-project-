@@ -1,0 +1,112 @@
+/**
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+@use '@angular/material' as mat;
+
+// Compact density themes — Material's canonical heights (36 / 32 / 28px).
+$-lg: mat.define-theme(
+	(
+		density: (
+			scale: -1,
+		),
+	)
+);
+$-md: mat.define-theme(
+	(
+		density: (
+			scale: -2,
+		),
+	)
+);
+$-sm: mat.define-theme(
+	(
+		density: (
+			scale: -3,
+		),
+	)
+);
+
+@mixin -height($h) {
+	--mat-button-filled-container-height: #{$h};
+	--mat-button-outlined-container-height: #{$h};
+	--mat-button-text-container-height: #{$h};
+	--mat-button-tonal-container-height: #{$h};
+	--mat-button-protected-container-height: #{$h};
+}
+
+@mixin -label-size($s) {
+	--mat-button-filled-label-text-size: #{$s};
+	--mat-button-outlined-label-text-size: #{$s};
+	--mat-button-text-label-text-size: #{$s};
+	--mat-button-tonal-label-text-size: #{$s};
+	--mat-button-protected-label-text-size: #{$s};
+}
+
+:host {
+	display: inline-flex;
+}
+
+.mat-mdc-button-base {
+	width: 100%;
+	font-weight: 500;
+	--mat-button-filled-container-shape: var(--radius-md);
+	--mat-button-outlined-container-shape: var(--radius-md);
+	--mat-button-text-container-shape: var(--radius-md);
+	--mat-button-tonal-container-shape: var(--radius-md);
+	--mat-button-protected-container-shape: var(--radius-md);
+}
+
+// Heights via Material's density scale; 24px (xs) sits below the button
+// density floor (-3 = 28px), so it sets the height token directly.
+.size-default,
+.size-icon {
+	@include mat.button-density($-md);
+}
+.size-sm,
+.size-icon-sm {
+	@include mat.button-density($-sm);
+}
+.size-lg,
+.size-icon-lg {
+	@include mat.button-density($-lg);
+}
+.size-xs,
+.size-icon-xs {
+	@include -height(1.5rem);
+}
+
+// Font-size isn't a density concern, so it stays a label token.
+.size-default,
+.size-lg {
+	@include -label-size(0.875rem);
+}
+.size-sm {
+	@include -label-size(0.8rem);
+}
+.size-xs {
+	@include -label-size(0.75rem);
+}
+
+// Icon-only: square, no min-width or horizontal padding. Material's leading-icon
+// margins assume a text label, so zero them to keep the icon centred.
+.size-icon,
+.size-icon-xs,
+.size-icon-sm,
+.size-icon-lg {
+	width: auto;
+	min-width: 0;
+	padding: 0;
+	aspect-ratio: 1;
+
+	.mat-icon {
+		margin: 0;
+	}
+}
+
+// Destructive: subtle red tint + red text, matching React's bg-destructive/10.
+.destructive {
+	--mat-button-filled-container-color: color-mix(in oklch, var(--destructive) 10%, transparent);
+	--mat-button-filled-label-text-color: var(--destructive);
+}

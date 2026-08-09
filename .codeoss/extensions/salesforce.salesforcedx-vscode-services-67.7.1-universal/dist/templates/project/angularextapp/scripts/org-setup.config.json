@@ -1,0 +1,9 @@
+{
+  "permsetAssignments": {
+    "assignments": {
+      "angularextapp_Guest_User_Api_Access": {
+        "assignee": "guestUser"
+      }
+    }
+  }
+}

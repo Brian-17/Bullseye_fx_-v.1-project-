@@ -1,0 +1,164 @@
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6" [attr.aria-busy]="loading()">
+	<app-object-breadcrumb
+		listPath="/accounts"
+		listLabel="Accounts"
+		[loading]="loading()"
+		[recordName]="recordName()"
+	/>
+
+	@if (loading()) {
+	<!-- Loading state -->
+	<app-skeleton class="h-8 w-56 mb-4" />
+	<app-card>
+		<app-card-content class="space-y-8">
+			<div class="space-y-4">
+				@for (row of skeletonRows; track row) {
+				<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+					<div>
+						<app-skeleton class="h-4 w-24 mb-1.5" />
+						<app-skeleton class="h-5 w-40" />
+					</div>
+					<div>
+						<app-skeleton class="h-4 w-24 mb-1.5" />
+						<app-skeleton class="h-5 w-40" />
+					</div>
+				</div>
+				}
+			</div>
+			<app-separator />
+			<div class="space-y-4">
+				<app-skeleton class="h-7 w-48 py-2" />
+				<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+					<app-skeleton class="h-12 w-full" />
+					<app-skeleton class="h-12 w-full" />
+				</div>
+			</div>
+		</app-card-content>
+	</app-card>
+	} @else if (error()) {
+	<!-- Error state -->
+	<app-alert
+		variant="destructive"
+		icon="error"
+		title="Failed to load account"
+		description="Something went wrong while loading this account. Please try again later."
+	/>
+	<div class="mt-4 flex gap-3">
+		<app-button appearance="outlined" (clicked)="goBack()">← Back</app-button>
+		<app-button appearance="outlined" (clicked)="reload()">Retry</app-button>
+	</div>
+	} @else if (notFound()) {
+	<!-- Not found state -->
+	<app-card>
+		<app-card-content class="flex flex-col items-center justify-center py-16 text-center">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-12 text-muted-foreground mb-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<path d="M12 17h.01" />
+				<path d="M10.1 9a2.4 2.4 0 0 1 3.9 1.9c0 1.5-2 2-2 3" />
+				<path d="M14.5 4.5 20 10l-2 2" />
+				<path d="M4 4h9l7 7v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" />
+			</svg>
+			<h2 class="text-lg font-semibold mb-1">Account not found</h2>
+			<p class="text-sm text-muted-foreground mb-6">
+				The account you're looking for doesn't exist or may have been deleted.
+			</p>
+			<app-button appearance="outlined" (clicked)="goBack()">← Go back</app-button>
+		</app-card-content>
+	</app-card>
+	} @else if (account()) {
+	<!-- Content -->
+	<h1 class="text-2xl font-bold mb-4">Account: {{ title() }}</h1>
+
+	<app-card>
+		<app-card-content class="space-y-8">
+			<!-- Top section -->
+			<div class="space-y-4">
+				@for (row of topRows(); track $index) {
+				<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+					@for (field of row; track field.label) {
+					<div>
+						<dt class="text-sm text-muted-foreground">{{ field.label }}</dt>
+						<dd class="mt-0.5">
+							@if (field.value && field.telephone) {
+							<a [href]="'tel:' + field.value" class="underline">{{ field.value }}</a>
+							} @else { {{ field.value ?? "—" }} }
+						</dd>
+					</div>
+					}
+				</div>
+				}
+			</div>
+
+			<app-separator />
+
+			<!-- Additional Information -->
+			<app-collapsible title="Additional Information" [(open)]="additionalOpen">
+				<div class="space-y-4">
+					@for (row of additionalRows(); track $index) {
+					<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+						@for (field of row; track field.label) {
+						<div>
+							<dt class="text-sm text-muted-foreground">{{ field.label }}</dt>
+							<dd class="mt-0.5">{{ field.value ?? "—" }}</dd>
+						</div>
+						}
+					</div>
+					}
+					<div>
+						<dt class="text-sm text-muted-foreground">Description</dt>
+						<dd class="mt-0.5">{{ description() ?? "—" }}</dd>
+					</div>
+				</div>
+			</app-collapsible>
+			<div class="space-y-4"></div>
+			<app-separator />
+
+			<!-- Address Information -->
+			<app-collapsible title="Address Information" [(open)]="addressOpen">
+				<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+					<div>
+						<dt class="text-sm text-muted-foreground">Billing Address</dt>
+						<dd class="mt-0.5">
+							@if (billingAddress()) { @for (line of billingAddress(); track $index) {
+							<div>{{ line }}</div>
+							} } @else { — }
+						</dd>
+					</div>
+					<div>
+						<dt class="text-sm text-muted-foreground">Shipping Address</dt>
+						<dd class="mt-0.5">
+							@if (shippingAddress()) { @for (line of shippingAddress(); track $index) {
+							<div>{{ line }}</div>
+							} } @else { — }
+						</dd>
+					</div>
+				</div>
+			</app-collapsible>
+			<div class="space-y-4"></div>
+			<app-separator />
+			<!-- System Information -->
+			<app-collapsible title="System Information" [(open)]="systemOpen">
+				<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+					<div>
+						<dt class="text-sm text-muted-foreground">Created By</dt>
+						<dd class="mt-0.5">{{ createdBy() ?? "—" }}</dd>
+					</div>
+					<div>
+						<dt class="text-sm text-muted-foreground">Last Modified By</dt>
+						<dd class="mt-0.5">{{ lastModifiedBy() ?? "—" }}</dd>
+					</div>
+				</div>
+			</app-collapsible>
+		</app-card-content>
+	</app-card>
+	}
+</div>

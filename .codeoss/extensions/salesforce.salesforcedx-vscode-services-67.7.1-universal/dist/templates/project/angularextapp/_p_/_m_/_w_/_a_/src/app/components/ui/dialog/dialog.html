@@ -1,0 +1,37 @@
+<ng-template
+	cdkConnectedOverlay
+	[cdkConnectedOverlayOpen]="open()"
+	[cdkConnectedOverlayHasBackdrop]="true"
+	cdkConnectedOverlayBackdropClass="cdk-overlay-dark-backdrop"
+	[cdkConnectedOverlayPositions]="[
+		{
+			originX: 'center',
+			originY: 'center',
+			overlayX: 'center',
+			overlayY: 'center',
+		},
+	]"
+	(backdropClick)="onBackdropClick()"
+	(overlayKeydown)="$event.key === 'Escape' && close()"
+	(detach)="close()"
+>
+	<div
+		role="dialog"
+		aria-modal="true"
+		[attr.aria-label]="ariaLabel()"
+		[attr.aria-labelledby]="ariaLabelledby()"
+		cdkTrapFocus
+		[cdkTrapFocusAutoCapture]="true"
+		class="bg-card text-card-foreground flex w-full max-w-md flex-col gap-4 rounded-xl p-6 shadow-lg ring-1 ring-black/10 outline-none"
+	>
+		<div data-slot="dialog-header" class="flex flex-col gap-1">
+			<ng-content select="[header]" />
+		</div>
+		<div data-slot="dialog-body" class="text-sm">
+			<ng-content />
+		</div>
+		<div data-slot="dialog-footer" class="flex items-center justify-end gap-2">
+			<ng-content select="[footer]" />
+		</div>
+	</div>
+</ng-template>

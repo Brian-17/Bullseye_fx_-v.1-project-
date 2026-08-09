@@ -1,0 +1,43 @@
+git add .
+git commit -m "Fix auth_crud and project errors"
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	new file:   backend/alembic/__pycache__/env.cpython-312.pyc
+#	modified:   backend/alembic/script.py.mako
+#	deleted:    backend/alembic/versions
+#	new file:   backend/alembic/versions/__pycache__/8a2a7ada5e76_initial_migration.cpython-312.pyc
+#	new file:   backend/alembic/versions/__pycache__/b7907e7a9cdc_initial_migration.cpython-312.pyc
+#	new file:   backend/alembic/versions/__pycache__/test.cpython-312.pyc
+#	new file:   backend/alembic/versions/b7907e7a9cdc_initial_migration.py
+#	modified:   backend/app/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/__pycache__/main.cpython-312.pyc
+#	modified:   backend/app/database/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/database/__pycache__/database.cpython-312.pyc
+#	modified:   backend/app/database/__pycache__/dependencies.cpython-312.pyc
+#	modified:   backend/app/database/__pycache__/init_db.cpython-312.pyc
+#	modified:   backend/app/models/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/models/__pycache__/trade.cpython-312.pyc
+#	modified:   backend/app/models/__pycache__/user.cpython-312.pyc
+#	modified:   backend/app/routes/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/routes/__pycache__/auth.cpython-312.pyc
+#	modified:   backend/app/schemas/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/schemas/__pycache__/auth.cpython-312.pyc
+#	modified:   backend/app/services/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/services/__pycache__/auth_crud.cpython-312.pyc
+#	modified:   backend/app/services/auth_crud.py
+#	modified:   backend/bullseye.db
+#
+# Changes not staged for commit:
+#	modified:   backend/app/services/__pycache__/auth_crud.cpython-312.pyc
+#	modified:   backend/app/services/auth_crud.py
+#	modified:   backend/app/utils/__pycache__/__init__.cpython-312.pyc
+#	modified:   backend/app/utils/__pycache__/security.cpython-312.pyc
+#
+# Untracked files:
+#	backend/app/services/.auth_crud.py.swp
+#

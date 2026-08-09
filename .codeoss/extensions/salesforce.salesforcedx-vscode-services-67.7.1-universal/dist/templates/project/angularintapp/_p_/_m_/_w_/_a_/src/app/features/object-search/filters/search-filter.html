@@ -1,0 +1,8 @@
+<app-filter-field-wrapper [label]="config().label" [htmlFor]="inputId()">
+	<app-input
+		type="search"
+		[placeholder]="config().placeholder ?? 'Search...'"
+		[value]="localValue()"
+		(valueChange)="onValueChange($event)"
+	/>
+</app-filter-field-wrapper>

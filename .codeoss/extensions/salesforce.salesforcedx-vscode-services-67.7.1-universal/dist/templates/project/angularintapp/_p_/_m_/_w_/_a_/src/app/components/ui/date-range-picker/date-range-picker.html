@@ -1,0 +1,34 @@
+<mat-form-field
+	class="w-full"
+	[class]="'size-' + size()"
+	[appearance]="appearance()"
+	subscriptSizing="dynamic"
+>
+	@if (label()) {
+		<mat-label>{{ label() }}</mat-label>
+	}
+	<mat-date-range-input [rangePicker]="picker" [min]="min()" [max]="max()" [disabled]="disabled()">
+		<input
+			matStartDate
+			[placeholder]="startPlaceholder()"
+			[value]="value()?.start ?? null"
+			[readonly]="readonly()"
+			(dateChange)="onStartChange($event.value)"
+			(click)="readonly() && picker.open()"
+			(keydown.enter)="readonly() && picker.open()"
+			(keydown.space)="readonly() && picker.open()"
+		/>
+		<input
+			matEndDate
+			[placeholder]="endPlaceholder()"
+			[value]="value()?.end ?? null"
+			[readonly]="readonly()"
+			(dateChange)="onEndChange($event.value)"
+			(click)="readonly() && picker.open()"
+			(keydown.enter)="readonly() && picker.open()"
+			(keydown.space)="readonly() && picker.open()"
+		/>
+	</mat-date-range-input>
+	<mat-datepicker-toggle matIconSuffix [for]="picker" />
+	<mat-date-range-picker #picker />
+</mat-form-field>

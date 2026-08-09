@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/bkiplangat17/app/page.tsx"],"sourcesContent":["export default function Home() {\n  return <h1 style={{textAlign: \"center\", marginTop: \"100px\"}}>Bullseye is Live 🚀</h1>\n}\n"],"names":["Home","style","textAlign","marginTop"],"mappings":";;;;;;AAAe,SAASA;IACtB,qBAAO,8OAAC;QAAGC,OAAO;YAACC,WAAW;YAAUC,WAAW;QAAO;kBAAG;;;;;;AAC/D"}}]
+}
