@@ -4,3 +4,4 @@ node_modules/
 .gemini/
 .bash_history
 *.log
+node_modules/
