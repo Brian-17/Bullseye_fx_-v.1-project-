@@ -12,3 +12,5 @@
 2026-08-09 12:45:53.525 [info] [127.0.0.1][92c4a4b8][ExtensionHostConnection] <23859> [reconnection-grace-time] Extension host: read VSCODE_RECONNECTION_GRACE_TIME=10800000ms (10800s)
 
 2026-08-09 12:47:26.290 [info] [127.0.0.1][92c4a4b8][ExtensionHostConnection] The client has reconnected.
+2026-08-09 13:13:18.948 [info] [127.0.0.1][226752eb][ManagementConnection] The client has reconnected.
+2026-08-09 13:13:18.963 [info] [127.0.0.1][92c4a4b8][ExtensionHostConnection] The client has reconnected.

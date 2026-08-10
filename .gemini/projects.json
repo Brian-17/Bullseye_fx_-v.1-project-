@@ -2,6 +2,7 @@
   "projects": {
     "/home/bkiplangat17": "bkiplangat17",
     "/google/devshell/editor/code-oss-for-cloud-shell": "code-oss-for-cloud-shell",
-    "/home/bkiplangat17/Bullseye_fx_-v.1-project-": "bullseye-fx-v-1-project"
+    "/home/bkiplangat17/Bullseye_fx_-v.1-project-": "bullseye-fx-v-1-project",
+    "/home": "home"
   }
 }

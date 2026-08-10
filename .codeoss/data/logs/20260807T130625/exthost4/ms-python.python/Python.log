@@ -1,7 +1,0 @@
-2026-08-07 13:47:49.962 [warning] Dir "/home/bkiplangat17/.pixi/envs" is not watchable (directory does not exist)
-2026-08-07 13:47:55.930 [info] > conda info --json
-2026-08-07 13:47:55.953 [info] Skipping ActivatedEnv Detection:  process.env.VSCODE_CLI !== '1'
-2026-08-07 13:47:55.970 [info] Python interpreter path: /bin/python
-2026-08-07 13:48:02.066 [info] > pyenv which python
-2026-08-07 13:48:02.075 [info] cwd: .
-2026-08-07 13:48:19.178 [info] Starting Jedi language server for bkiplangat17.

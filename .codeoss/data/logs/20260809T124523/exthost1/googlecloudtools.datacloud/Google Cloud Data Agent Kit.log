@@ -72,3 +72,14 @@
 2026-08-09 12:47:38.222 [info] Executing: gcloud auth application-default print-access-token
 2026-08-09 12:47:43.805 [info] Verified that user is logged in to gcloud CLI and ADC.
 2026-08-09 12:49:47.533 [info] proactively refreshing access token
+2026-08-09 13:46:55.701 [info] MCP config plugin: ideType: 6
+2026-08-09 13:46:55.708 [info] MCP config plugin: MCP config key: mcpServers
+2026-08-09 13:47:12.303 [info] MCP config plugin: ideType: 6
+2026-08-09 13:47:12.303 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-08-09 13:47:12.304 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-08-09 13:47:12.754 [info] MCP config plugin: MCP config key: mcpServers
+2026-08-09 13:47:12.756 [info] MCP config plugin: ideType: 6
+2026-08-09 13:47:12.783 [info] MCP config plugin: MCP config key: mcpServers
+2026-08-09 13:47:12.952 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-08-09 13:47:12.967 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-08-09 13:48:51.491 [info] proactively refreshing access token

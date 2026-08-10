@@ -1,558 +1,3 @@
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": ["node_modules"]
-}
-EOF
-
-cat > next-env.d.ts <<'EOF'
-/// <reference types="next" />
-/// <reference types="next/image-types/global" />
-
-// NOTE: This file should not be edited
-EOF
-
-cd ~/Bullseye_fx_backup/frontend
-npm instalcd ~/Bullseye_fx_backup/frontend
-npm install
-cat > package.json <<'EOF'
-{
-  "name": "bullseye-fx-frontend",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "15.5.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.2"
-  }
-}
-EOF
-
-ls -l package.json
-cat > tsconfig.json <<'EOF'
-{
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": ["node_modules"]
-}
-EOF
-
-ls -l package.json tsconfig.json
-cat > next-env.d.ts <<'EOF'
-/// <reference types="next" />
-/// <reference types="next/image-types/global" />
-
-// NOTE: This file should not be edited manually.
-EOF
-
-ls -l package.json tsconfig.json next-env.d.ts
-npm install
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-find app components -maxdepth 2 -type f -print | sort
-ls -lb app/Dashboard components/Dashboard
-cd ~/Bullseye_fx_backup/frontend
-mv "app/Dashboard " app/Dashboard
-find app -maxdepth 2 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-sed -i 's#components/dashboard/#components/Dashboard/#g' app/page.tsx
-head -n 8 app/page.tsx
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-sed -i 's#PerformanceChart#performancechart#g' app/page.tsx
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat -n "app/Dashboard/page.tsx"
-cd ~/Bullseye_fx_backup/frontend
-cat > "app/Dashboard/page.tsx" <<'EOF'
-import RiskRewardCalculator from "../../components/Dashboard/riskrewardcalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/Bulles'eyesetupbuilder";
-import EconomicCalendar from "../../components/Dashboard/Economic calender";
-import AISignalPanel from "../../components/Dashboard/AIsignalpannel";
-import MarketOverview from "../../components/Dashboard/market overview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/performancechart";
-import RecentTrades from "../../components/Dashboard/recenttrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat > "app/Dashboard/page.tsx" <<'EOF'
-import RiskRewardCalculator from "../../components/Dashboard/riskrewardcalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/Bulles'eyesetupbuilder";
-import EconomicCalendar from "../../components/Dashboard/Economic calender";
-import AISignalPanel from "../../components/Dashboard/AIsignalpannel";
-import MarketOverview from "../../components/Dashboard/market overview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/performancechart";
-import RecentTrades from "../../components/Dashboard/recenttrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-cat -n "app/Dashboard/page.tsx"
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat -n "app/Journal/Page.tsx"
-cd ~/Bullseye_fx_backup/frontend
-cat -n "app/Journal/Page.tsx"
-cd ~/Bullseye_fx_backup/frontend
-cat > "app/Journal/Page.tsx" <<'EOF'
-import TradeCard from "../../components/journal/TradeCard";
-
-export default function TradingJournal() {
-  return (
-    <div style={{ padding: "30px" }}>
-      <h1>Trading Journal</h1>
-
-      <TradeCard
-        pair="XAU/USD"
-        type="BUY"
-        result="+$250"
-      />
-
-      <TradeCard
-        pair="NAS100"
-        type="SELL"
-        result="-$80"
-      />
-
-      <TradeCard
-        pair="S&P 500"
-        type="BUY"
-        result="+$145"
-      />
-
-      <p>Record every trade and improve your performance.</p>
-    </div>
-  );
-}
-EOF
-
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-grep -Rni "performanceCharts" app components
-cd ~/Bullseye_fx_backup/frontend
-grep -Rni "performanceCharts" app components
-cd ~/Bullseye_fx_backup/frontend
-grep -Rni "performanceChart" app components
-cd ~/Bullseye_fx_backup/frontend
-nl -ba app/page.tsx | sed -n '100,115p'
-cd ~/Bullseye_fx_backup/frontend
-nl -ba app/page.tsx | sed -n '100,115p'
-nl -ba app/Dashboard/page.tsx | sed -n '1,45p'
-# Fix component casing in app/page.tsx
-sed -i 's/<performancechart /<PerformanceChart /g' app/page.tsx
-# Fix gridTemplateColumns typo
-sed -i 's/minmax(250px,1fr)/minmax(250px,1fr))/g' app/Dashboard/page.tsx
-cd components/Dashboard
-mv performancechart.tsx PerformanceChart.tsx
-mv recenttrades.tsx RecentTrades.tsx
-mv "market overview.tsx" MarketOverview.tsx
-mv "Economic calender.tsx" EconomicCalendar.tsx
-mv AIsignalpannel.tsx AISignalPanel.tsx
-mv "riskrewardcalculator.tsx" RiskRewardCalculator.tsx
-mv "Bulles'eyesetupbuilder.tsx" BullseyeSetupBuilder.tsx
-cd ../../
-npm run build
-sed -i 's#../../components/Dashboard/risk#../../components/Dashboard/RiskRewardCalculator#g; 
-s#../../components/Dashboard/Bull#../../components/Dashboard/BullseyeSetupBuilder#g; 
-s#../../components/Dashboard/Economic#../../components/Dashboard/EconomicCalendar#g; 
-s#../../components/Dashboard/AI#../../components/Dashboard/AISignalPanel#g; 
-s#../../components/Dashboard/market#../../components/Dashboard/MarketOverview#g' app/Dashboard/page.tsx
-head -n 9 app/Dashboard/page.tsx
-npm run build
-vcat > app/Dashboard/page.tsx << 'EOF'
-import RiskRewardCalculator from "../../components/Dashboard/RiskRewardCalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/BullseyeSetupBuilder";
-import EconomicCalendar from "../../components/Dashboard/EconomicCalendar";
-import AISignalPanel from "../../components/Dashboard/AISignalPanel";
-import MarketOverview from "../../components/Dashboard/MarketOverview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/PerformanceChart";
-import RecentTrades from "../../components/Dashboard/RecentTrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-npm run build
-# 1. Rename folder to lowercase
-mv app/Dashboard app/dashboard
-# 2. Rewrite the file properly with imports
-cat > app/dashboard/page.tsx << 'EOF'
-'use client';
-
-import RiskRewardCalculator from "../../components/Dashboard/RiskRewardCalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/BullseyeSetupBuilder";
-import EconomicCalendar from "../../components/Dashboard/EconomicCalendar";
-import AISignalPanel from "../../components/Dashboard/AISignalPanel";
-import MarketOverview from "../../components/Dashboard/MarketOverview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/PerformanceChart";
-import RecentTrades from "../../components/Dashboard/RecentTrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-npm run build
-sed -i 's/import performancechart/import PerformanceChart/g' app/page.tsx
-sed -i 's#../components/Dashboard#../components/dashboard#g' app/page.tsx
-sed -i 's/<performancechart /<PerformanceChart /g' app/page.tsx
-npm run build
-# 1. Rename the folder
-mv components/Dashboard components/dashboard
-# 2. Rename all files inside to PascalCase
-cd components/dashboard
-mv sidebar.tsx Sidebar.tsx
-mv topbar.tsx Topbar.tsx
-mv statscard.tsx StatsCard.tsx
-mv performancechart.tsx PerformanceChart.tsx
-ls
-cd ../../
-npm run build
-sed -i 's#../../components/Dashboard#../../components/dashboard#g' app/dashboard/page.tsx
-head -n 8 app/dashboard/page.tsx
-npm run build
-# 1. Fix the import name and path
-sed -i 's/performancechar/PerformanceChart/g' app/page.tsx
-# 2. Make sure folder is lowercase
-sed -i 's#../components/Dashboard#../components/dashboard#g' app/page.tsx
-npm run build
-sed -i 's/PerformanceChartt/PerformanceChart/g' app/page.tsx
-grep "PerformanceChart" app/page.tsx
-npm run build
-cd ~/Bullseye_fx_backup/backend
-npm install
-ls -la ~/Bullseye_fx_backup/backend
-# 1. Activate virtual env - create one if you don't have it
-python3 -m venv venv
-source venv/bin/activate
-# 2. Install deps
-pip install -r requirements.txt
-# 3. Start FastAPI server
-cd ~/Bullseye_fx_backup/frontend
-npm install
-cd ~/Bullseye_fx_backup/frontend
-npm install
-cd ~/Bullseye_fx_backup/backend
-git pull
-cd ~/Bullseye_fx_backup
-git pull
-cd ~/Bullseye_fx_backup
-git fetch --all
-git reset --hard origin/main
-# Terminal 1: Backend
-cd backend
-uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
-# Terminal 2: Frontend  
-cd ../frontend
-npm run dev
-pkill -f uvicorn
-uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
-cd ~/Bullseye_fx_backup/backend
-cd ~/Bullseye_fx_backup/frontend
-rm package.json package-lock.json
-git checkout package.json package-lock.json
-npm install
-npm run dev
-# 1. Kill old backend
-pkill -f uvicorn
-# 2. Start backend
-cd ~/Bullseye_fx_backup/backend
-uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
-cd ~/Bullseye_fx_backup
-# 1. Force restore frontend folder from github
-git checkout HEAD -- frontend/
-# 2. Go to frontend and install
-cd frontend
-npm install
-# 3. Start frontend
-npm run dev
-cd ~/Bullseye_fx_backup/frontend
-# 1. Delete the broken file
-rm package.json
-# 2. Create a new clean package.json
-cat > package.json << 'EOF'
-{
-  "name": "bullseye-fx-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3002",
-    "build": "next build",
-    "start": "next start -p 3002",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "axios": "^1.7.2",
-    "next": "14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.14.11",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.6",
-    "typescript": "^5.5.3"
-  }
-}
-EOF
-
-# 3. Install and run
-npm install
-npm run devo
-npm run dev
-lsof -ti:3002 | xargs kill -9
-npm run dev
-pkill -f "next dev"
-npm run dev
-npm run dev
-cd ~/Bullseye_fx_backup/frontend
-cd ~/Bullseye_fx_backup/backend
-pkill -f uvicorn
-uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
-# 3. Fix and start frontend - new terminal
-cd ~/Bullseye_fx_backup/frontend
-rm package.json package-lock.json
-git checkout package.json package-lock.json
-npm install
-npm run dev
-uvicorn main:app --host 0.0.0.0 --port 5000 --reload --without-docs
-axios.get(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/stats`)
-pkill -f "next dev"
-npm run dev
-npm run dev
-cd ~/Bullseye_fx_backup/backend
-pkill -f uvicorn
-uvicorn main:app --host 0.0.0.0 --port 5000 --reload
-cd ~/Bullseye_fx_backup/frontend
-pkill -f "next dev"
-cd ~/Bullseye_fx_backup/backend
-ls
-cd ~/Bullseye_fx_backup/backend
-ls
-cd ~/Bullseye_fx_backup/frontend
-pkill -f "next dev"
-cd ~/Bullseye_fx_backup/backend
-uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload
-cd ~/Bullseye_fx_backup/frontend
-pwd
-ls
-pkill -f "next dev"
-npm install
-npm run dev
-find . -name package.jsofind . -name package.json
-find . -name package.json
-cd app
-ls
-cd ..
-ls
-npm init -y
-npm install next react react-dom
-npm install -D typescript @types/react @types/nodenpm install -D typescript @types/react @types/node
-npm install -D typescript @types/react @types/node
-echo '{
-  "name": "bullseye-frontend",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "^16.3.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
-  },
-  "devDependencies": {
-    "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "typescript": "^7.0.2"
-  }
-}' > package.json
-npm run dev
-npm install
-npm run dev
 BLfuser -k 3000/tcp
 lsof -i :3000
 killall node
@@ -574,4 +19,486 @@ echo 'export default function RootLayout({ children }: { children: React.ReactNo
     </html>
   )
 }' > app/layout.tsx
+git init
+git add .
+git commit -m "Initial commit: Next.js app running on port 3001 - Bullseye is Live 🚀"
+git remote add origin https://github.com/YOUR-USERNAME/bullseye.git
+git branch -M main
+git push -u origin main
+git remote remove origin
+git remote add origin https://github.com/Brian-17/bullseye.git
+echo "node_modules/" >> .gitignore
+git rm -r --cached node_modules
+git add .gitignore
+git commit -m "Add .gitignore"
+git push -u origin main
+git pull origin main --rebase
+git push -u origin main
+git add .gitignore
+git commit -m "Add .gitignore and remove node_modules"
+git pull origin main --rebase
+git push -u origin main
+echo "node_modules/" >> .gitignore
+echo ".next/" >> .gitignore
+echo ".gemini/" >> .gitignore
+echo ".bash_history" >> .gitignore
+echo "*.log" >> .gitignore
+git add .gitignore app/ package.json package-lock.json
+git commit -m "Initial commit: Next.js Bullseye app"
+git pull origin main --rebase
+git push -u origin main
+git push -u origin main --force
+cloudshe shell terminal echo ".next/" >> .gitignore
+echo "node_modules/" >> .gitignore
+git rm -r --cached .next node_modules 2>/dev/null
+git add .gitignore
+git commit -m "Cleanup: ignore build files"
+git push
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+pwd
+cat package.json
+npm run
+cd ~/Bullseye_fx_backup
+git status
+git remote -v
+cd ~/Bullseye_fx_backup
+git rev-parse HEAD
+git rev-parse origin/main
+git log --oneline -3
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+cat package.json
+cd ~/Bullseye_fx_backup/frontend
+npm pkg set scripts.dev="next dev"
+npm pkg set scripts.build="next build"
+npm pkg set scripts.start="next start"
+cat package.json
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+cat lib/Api.ts
+cd ~/Bullseye_fx_backup/frontend
+cat > lib/Api.ts <<'EOF'
+const API_URL = "http://localhost:8000";
+
+function getToken() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  return localStorage.getItem("access_token");
+}
+
+export async function getTrades() {
+  const token = getToken();
+
+  const response = await fetch(`${API_URL}/trades/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch trades: ${response.status}`);
+  }
+
+  return response.json();
+}
+EOF
+
+tail -n 5 lib/Api.ts
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+cat > lib/Api.ts <<'EOF'
+const API_URL = "http://localhost:8000";
+
+function getToken() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  return localStorage.getItem("access_token");
+}
+
+async function apiFetch(path: string) {
+  const token = getToken();
+
+  const response = await fetch(`${API_URL}${path}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export async function getTrades() {
+  return apiFetch("/trades/");
+}
+
+export async function getDashboardStats() {
+  return apiFetch("/dashboard/stats");
+}
+EOF
+
+tail -n 12 lib/Api.ts
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+find components -type f -iname 'positionsizecalculator.tsx' -print
+cd ~/Bullseye_fx_backup/frontend
+rm -f components/dashboard/positionsizecalculator.tsx
+find components -type f -iname 'positionsizecalculator.tsx' -print
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+cat package.json
+cd ~/Bullseye_fx_backup/frontend
+npm pkg delete type
+grep '"type"' package.json
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+cat > "app/Dashboard /page.tsx" <<'EOF'
+import RiskRewardCalculator from "../../components/Dashboard/riskrewardcalculator";
+import BullseyeSetupBuilder from "../../components/Dashboard/Bulles'eyesetupbuilder";
+import EconomicCalendar from "../../components/Dashboard/Economic calender";
+import AISignalPanel from "../../components/Dashboard/AIsignalpannel";
+import MarketOverview from "../../components/Dashboard/market overview";
+import StatsCard from "../../components/Dashboard/StatsCard";
+import PerformanceChart from "../../components/Dashboard/performancechart";
+import RecentTrades from "../../components/Dashboard/recenttrades";
+
+export default function DashboardPage() {
+  return (
+    <main
+      style={{
+        padding: "40px",
+        background: "#f8fafc",
+        minHeight: "100vh",
+      }}
+    >
+      <h1>Dashboard</h1>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+          gap: "20px",
+          marginTop: "30px",
+        }}
+      >
+        <StatsCard title="Total Trades" value="0" />
+        <StatsCard title="Win Rate" value="0%" />
+        <StatsCard title="Account Balance" value="$0.00" />
+        <StatsCard title="Active Signals" value="0" />
+      </div>
+
+      <PerformanceChart />
+      <MarketOverview />
+      <RecentTrades />
+      <AISignalPanel />
+      <EconomicCalendar />
+      <BullseyeSetupBuilder />
+      <RiskRewardCalculator />
+    </main>
+  );
+}
+EOF
+
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+find components/dashboard components/Dashboard -maxdepth 1 -type f -print 2>/dev/null | sort
+cd ~/Bullseye_fx_backup/frontend
+rm -rf components/dashboard
+find components -maxdepth 2 -type f -print | sort
+cd ~/Bullseye_fx_backup/frontend
+grep -RniE 'components/dashboard|PerformanceChart|RecentTrades|AISignalPanel|EconomicCalendar|MarketOverview|RiskRewardCalculator|BullseyeSetupBuilder' app components --include='*.tsx'
+cd ~/Bullseye_fx_backup/frontend
+sed -i 's#components/dashboard/#components/Dashboard/#g' app/page.tsx app/dashboard/page.tsx
+grep -Rni 'components/dashboard' app --include='*.tsx'
+grep -Rn 'components/dashboard' app --include='*.tsx'
+cd ~/Bullseye_fx_backup/frontend
+mv "components/Dashboard/performancechart.tsx" "components/Dashboard/PerformanceChart.tsx"
+mv "components/Dashboard/recenttrades.tsx" "components/Dashboard/RecentTrades.tsx"
+mv "components/Dashboard/riskrewardcalculator.tsx" "components/Dashboard/RiskRewardCalculator.tsx"
+mv "components/Dashboard/positionsizecalculator.tsx" "components/Dashboard/PositionSizeCalculator.tsx"
+mv "components/Dashboard/market overview.tsx" "components/Dashboard/MarketOverview.tsx"
+mv "components/Dashboard/Economic calender.tsx" "components/Dashboard/EconomicCalendar.tsx"
+mv "components/Dashboard/AIsignalpannel.tsx" "components/Dashboard/AISignalPanel.tsx"
+mv "components/Dashboard/Bulles'eyesetupbuilder.tsx" "components/Dashboard/BullseyeSetupBuilder.tsx"
+cd ~/Bullseye_fx_backup/frontend
+find components/Dashboard -maxdepth 1 -type f -print | sort
+cd ~/Bullseye_fx_backup/frontend
+find components/Dashboard -maxdepth 1 -type f -print | sort
+cd ~/Bullseye_fx_backup/frontend
+cat > "app/Dashboard /page.tsx" <<'EOF'
+import RiskRewardCalculator from "../../components/Dashboard/RiskRewardCalculator";
+import BullseyeSetupBuilder from "../../components/Dashboard/BullseyeSetupBuilder";
+import EconomicCalendar from "../../components/Dashboard/EconomicCalendar";
+import AISignalPanel from "../../components/Dashboard/AISignalPanel";
+import MarketOverview from "../../components/Dashboard/MarketOverview";
+import StatsCard from "../../components/Dashboard/StatsCard";
+import PerformanceChart from "../../components/Dashboard/PerformanceChart";
+import RecentTrades from "../../components/Dashboard/RecentTrades";
+
+export default function DashboardPage() {
+  return (
+    <main
+      style={{
+        padding: "40px",
+        background: "#f8fafc",
+        minHeight: "100vh",
+      }}
+    >
+      <h1>Dashboard</h1>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+          gap: "20px",
+          marginTop: "30px",
+        }}
+      >
+        <StatsCard title="Total Trades" value="0" />
+        <StatsCard title="Win Rate" value="0%" />
+        <StatsCard title="Account Balance" value="$0.00" />
+        <StatsCard title="Active Signals" value="0" />
+      </div>
+
+      <PerformanceChart />
+      <MarketOverview />
+      <RecentTrades />
+      <AISignalPanel />
+      <EconomicCalendar />
+      <BullseyeSetupBuilder />
+      <RiskRewardCalculator />
+    </main>
+  );
+}
+EOF
+
+cd ~/Bullseye_fx_backup/frontend
+find app -maxdepth 2 -type f -print | sort
+cd ~/Bullseye_fx_backup/frontend
+rm -rf "app/Dashboard "
+find app -maxdepth 2 -type f -print | sort
+cd ~/Bullseye_fx_backup/frontend
+mv components components_tmp
+mv components_tmp components
+mv app app_tmp
+mv app_tmp app
+mv Journal journal_tmp 2>/dev/null || true
+cd ~/Bullseye_fx_backup/frontend
+mv components/Dashboard components/dashboard_tmp
+mv components/dashboard_tmp components/dashboard
+mv app/Journal app/journal_tmp
+mv app/journal_tmp app/journal
+mv app/Login app/login_tmp
+mv app/login_tmp app/login
+mv app/Dashboard app/dashboard_tmp 2>/dev/null || true
+cd ~/Bullseye_fx_backup/frontend
+find . -type d -print | sort
+mv components/Dashboard components/dashboard
+sed -i 's/components\/Dashboard/components\/dashboard/g' app/page.tsx app/dashboard/page.tsx
+npm run build
+cat -n app/Journal/Page.tsx
+cd ~/Bullseye_fx_backup/frontend
+cat > app/Journal/Page.tsx <<'EOF'
+import TradeCard from "../../components/journal/TradeCard";
+
+export default function TradingJournal() {
+  return (
+    <div style={{ padding: "30px" }}>
+      <h1>Trading Journal</h1>
+
+      <p>Record every trade and improve your performance.</p>
+
+      <TradeCard
+        pair="XAU/USD"
+        type="BUY"
+        result="+$250"
+      />
+
+      <TradeCard
+        pair="NAS100"
+        type="SELL"
+        result="-$80"
+      />
+
+      <TradeCard
+        pair="S&P 500"
+        type="BUY"
+        result="+$145"
+      />
+    </div>
+  );
+}
+EOF
+
+npm run build
+cat > app/Journal/Page.tsx << 'EOF'
+export default function TradingJournal() {
+  return (
+    <div>
+      <h1>Trading Journal</h1>
+      <p>Record every trade and improve your performance.</p>
+
+      <TradeCard
+        pair="XAU/USD"
+        type="BUY"
+        result="+$250"
+      />
+
+      <TradeCard
+        pair="NAS100"
+        type="SELL"
+        result="-$80"
+      />
+
+      <TradeCard
+        pair="S&P 500"
+        type="BUY"
+        result="+$145"
+      />
+    </div>
+  );
+}
+EOF
+
+cd ~/Bullseye_fx_backup/frontend
+sed -n '1,80p' app/journal/Page.tsx
+head -n 25 app/Journal/Page.tsx > app/Journal/Page.tmp && mv app/Journal/Page.tmp app/Journal/Page.tsx
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+python3 - <<'PY'
+from pathlib import Path
+
+p = Path("app/journal/Page.tsx")
+text = p.read_text()
+
+marker = '\nexport default function TradingJournal() {'
+first = text.find(marker)
+second = text.find(marker, first + 1)
+
+if second != -1:
+    text = text[:second].rstrip() + '\n'
+
+p.write_text(text)
+PY
+
+cat app/journal/Page.tsx
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup/frontend
+npm run build
+cd ~/Bullseye_fx_backup
+git status
+cd ~/Bullseye_fx_backup && git status --short
+cat >> .gitignore << 'EOF'
+__pycache__/
+*.pyc
+*.swp
+backend/venv/
+node_modules/
+.next/
+EOF
+
+git add -A
+git commit -m "fix: resolve case sensitivity issues - rename Dashboard to dashboard and Journal files"
+git push
+git remote set-url origin https://github.com/Brian-17/bullseye.git
+git push -u origin main
+git pull origin main
+git remote set-url origin https://github.com/Brian-17/bullseye.git
+git push -u origin main
+git push -f origin main
+vercel login
+vercel clone bullseye-fx-v-1-project
+cd bullseye-fx-v-1-project
+npm install -g vercel
+vercel login
+vercel pull --yes --environment=Production --token=$(vercel whoami)
+vercel link
+vercel pull --yes --environment=Production
+vercel pull --yes --environment=production
+npm install @supabase/supabase-js
+mkdir -p lib
+cat > lib/supabaseClient.ts << 'EOF'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+EOF
+
+vercel --prod
+ls
+cd bullseye-fx-v-1-project
+rm -rf lib
+mkdir -p lib
+cat > lib/supabaseClient.ts << 'EOF'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+EOF
+
+vercel --prod
+vercel unlink
+rm .vercel/project.json
+vercel link
+rm -rf .vercel
+vercel link
+rm -rf .vercel
+vercel link --project=bullseye-fx-v-1-project
+cat .vercel/project.json
+vercel --prod
+rm -rf node_modules .vercel
+npm install
+vercel link --project=bullseye-fx-v-1-project --yes
+vercel --prod
+rm -rf node_modules .vercel
+npm install
+vercel link --project=bullseye-fx-v-1-project --yes
+vercel --prod
+rm -rf node_modules .vercel
+pwd
+ls -la
+cat package.json | grep name
+rm -rf .vercel
+vercel link --project=bullseye-fx-v-1-project --yes
+vercel --prod
+cat > .vercelignore << EOF
+node_modules
+.next
+.git
+*.log
+EOF
+
+rm -rf .vercel
+vercel link --project=bullseye-fx-v-1-project --yes
+vercel --prod --force --no-git
+cat > .vercelignore << EOF
+node_modules
+.next
+.git
+*.log
+EOF
+
+rm -rf .vercel
+vercel link --project=bullseye-fx-v-1-project --yes
+vercel --prod --force --no-git
+vercel --prod --force
+vercel --prod --force --no-git
+vercel --prod --force
 git init
