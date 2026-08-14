@@ -499,3 +499,7 @@ git pull --rebase origin main
 git push origin main
 git pull --rebase origin main
 git status
+git add .
+git commit -m "Fix registration and login flows"
+git pull --rebase origin main
+git status
