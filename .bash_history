@@ -1,504 +1,501 @@
-BLfuser -k 3000/tcp
-lsof -i :3000
-killall node
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  allowedDevOrigins: [
+    '3000-cs-bb91e112-33e2-4412-8ee7-c5a901b58ff0.cs-europe-west1-onse.cloudshell.dev',
+  ],
+};
+
+module.exports = nextConfig;
+EOF
+
+cat next.config.js
+cd ~/bullseye-fx-v-1-project/frontend
+pkill -f "next dev" || true
 npm run dev
-npm run dev -- -p 3001
-npm run dev -- -p 3001 -H 0.0.0.0
-mkdir -p app
-echo 'export default function Home() {
-  return <h1 style={{textAlign: "center", marginTop: "100px"}}>Bullseye is Live 🚀</h1>
-}' > app/page.tsx
-echo 'module.exports = {
-  allowedDevOrigins: ["3001-cs-bb91e112-33e2-4412-8ee7-c5a901b58ff0.cs-europe-west1-onse.cloudshell.dev"]
-}' > next.config.js
-npm run dev -- -p 3001 -H 0.0.0.0
-echo 'export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  )
-}' > app/layout.tsx
-git init
-git add .
-git commit -m "Initial commit: Next.js app running on port 3001 - Bullseye is Live 🚀"
-git remote add origin https://github.com/YOUR-USERNAME/bullseye.git
-git branch -M main
-git push -u origin main
-git remote remove origin
-git remote add origin https://github.com/Brian-17/bullseye.git
-echo "node_modules/" >> .gitignore
-git rm -r --cached node_modules
-git add .gitignore
-git commit -m "Add .gitignore"
-git push -u origin main
-git pull origin main --rebase
-git push -u origin main
-git add .gitignore
-git commit -m "Add .gitignore and remove node_modules"
-git pull origin main --rebase
-git push -u origin main
-echo "node_modules/" >> .gitignore
-echo ".next/" >> .gitignore
-echo ".gemini/" >> .gitignore
-echo ".bash_history" >> .gitignore
-echo "*.log" >> .gitignore
-git add .gitignore app/ package.json package-lock.json
-git commit -m "Initial commit: Next.js Bullseye app"
-git pull origin main --rebase
-git push -u origin main
-git push -u origin main --force
-cloudshe shell terminal echo ".next/" >> .gitignore
-echo "node_modules/" >> .gitignore
-git rm -r --cached .next node_modules 2>/dev/null
-git add .gitignore
-git commit -m "Cleanup: ignore build files"
-git push
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-pwd
-cat package.json
-npm run
-cd ~/Bullseye_fx_backup
-git status
-git remote -v
-cd ~/Bullseye_fx_backup
-git rev-parse HEAD
-git rev-parse origin/main
-git log --oneline -3
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat package.json
-cd ~/Bullseye_fx_backup/frontend
-npm pkg set scripts.dev="next dev"
-npm pkg set scripts.build="next build"
-npm pkg set scripts.start="next start"
-cat package.json
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat lib/Api.ts
-cd ~/Bullseye_fx_backup/frontend
-cat > lib/Api.ts <<'EOF'
-const API_URL = "http://localhost:8000";
-
-function getToken() {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  return localStorage.getItem("access_token");
-}
-
-export async function getTrades() {
-  const token = getToken();
-
-  const response = await fetch(`${API_URL}/trades/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch trades: ${response.status}`);
-  }
-
-  return response.json();
-}
-EOF
-
-tail -n 5 lib/Api.ts
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat > lib/Api.ts <<'EOF'
-const API_URL = "http://localhost:8000";
-
-function getToken() {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  return localStorage.getItem("access_token");
-}
-
-async function apiFetch(path: string) {
-  const token = getToken();
-
-  const response = await fetch(`${API_URL}${path}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`API request failed: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-export async function getTrades() {
-  return apiFetch("/trades/");
-}
-
-export async function getDashboardStats() {
-  return apiFetch("/dashboard/stats");
-}
-EOF
-
-tail -n 12 lib/Api.ts
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-find components -type f -iname 'positionsizecalculator.tsx' -print
-cd ~/Bullseye_fx_backup/frontend
-rm -f components/dashboard/positionsizecalculator.tsx
-find components -type f -iname 'positionsizecalculator.tsx' -print
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat package.json
-cd ~/Bullseye_fx_backup/frontend
-npm pkg delete type
-grep '"type"' package.json
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-cat > "app/Dashboard /page.tsx" <<'EOF'
-import RiskRewardCalculator from "../../components/Dashboard/riskrewardcalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/Bulles'eyesetupbuilder";
-import EconomicCalendar from "../../components/Dashboard/Economic calender";
-import AISignalPanel from "../../components/Dashboard/AIsignalpannel";
-import MarketOverview from "../../components/Dashboard/market overview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/performancechart";
-import RecentTrades from "../../components/Dashboard/recenttrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-npm run build
-cd ~/Bullseye_fx_backup/frontend
-find components/dashboard components/Dashboard -maxdepth 1 -type f -print 2>/dev/null | sort
-cd ~/Bullseye_fx_backup/frontend
-rm -rf components/dashboard
-find components -maxdepth 2 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-grep -RniE 'components/dashboard|PerformanceChart|RecentTrades|AISignalPanel|EconomicCalendar|MarketOverview|RiskRewardCalculator|BullseyeSetupBuilder' app components --include='*.tsx'
-cd ~/Bullseye_fx_backup/frontend
-sed -i 's#components/dashboard/#components/Dashboard/#g' app/page.tsx app/dashboard/page.tsx
-grep -Rni 'components/dashboard' app --include='*.tsx'
-grep -Rn 'components/dashboard' app --include='*.tsx'
-cd ~/Bullseye_fx_backup/frontend
-mv "components/Dashboard/performancechart.tsx" "components/Dashboard/PerformanceChart.tsx"
-mv "components/Dashboard/recenttrades.tsx" "components/Dashboard/RecentTrades.tsx"
-mv "components/Dashboard/riskrewardcalculator.tsx" "components/Dashboard/RiskRewardCalculator.tsx"
-mv "components/Dashboard/positionsizecalculator.tsx" "components/Dashboard/PositionSizeCalculator.tsx"
-mv "components/Dashboard/market overview.tsx" "components/Dashboard/MarketOverview.tsx"
-mv "components/Dashboard/Economic calender.tsx" "components/Dashboard/EconomicCalendar.tsx"
-mv "components/Dashboard/AIsignalpannel.tsx" "components/Dashboard/AISignalPanel.tsx"
-mv "components/Dashboard/Bulles'eyesetupbuilder.tsx" "components/Dashboard/BullseyeSetupBuilder.tsx"
-cd ~/Bullseye_fx_backup/frontend
-find components/Dashboard -maxdepth 1 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-find components/Dashboard -maxdepth 1 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-cat > "app/Dashboard /page.tsx" <<'EOF'
-import RiskRewardCalculator from "../../components/Dashboard/RiskRewardCalculator";
-import BullseyeSetupBuilder from "../../components/Dashboard/BullseyeSetupBuilder";
-import EconomicCalendar from "../../components/Dashboard/EconomicCalendar";
-import AISignalPanel from "../../components/Dashboard/AISignalPanel";
-import MarketOverview from "../../components/Dashboard/MarketOverview";
-import StatsCard from "../../components/Dashboard/StatsCard";
-import PerformanceChart from "../../components/Dashboard/PerformanceChart";
-import RecentTrades from "../../components/Dashboard/RecentTrades";
-
-export default function DashboardPage() {
-  return (
-    <main
-      style={{
-        padding: "40px",
-        background: "#f8fafc",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Dashboard</h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
-        }}
-      >
-        <StatsCard title="Total Trades" value="0" />
-        <StatsCard title="Win Rate" value="0%" />
-        <StatsCard title="Account Balance" value="$0.00" />
-        <StatsCard title="Active Signals" value="0" />
-      </div>
-
-      <PerformanceChart />
-      <MarketOverview />
-      <RecentTrades />
-      <AISignalPanel />
-      <EconomicCalendar />
-      <BullseyeSetupBuilder />
-      <RiskRewardCalculator />
-    </main>
-  );
-}
-EOF
-
-cd ~/Bullseye_fx_backup/frontend
-find app -maxdepth 2 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-rm -rf "app/Dashboard "
-find app -maxdepth 2 -type f -print | sort
-cd ~/Bullseye_fx_backup/frontend
-mv components components_tmp
-mv components_tmp components
-mv app app_tmp
-mv app_tmp app
-mv Journal journal_tmp 2>/dev/null || true
-cd ~/Bullseye_fx_backup/frontend
-mv components/Dashboard components/dashboard_tmp
-mv components/dashboard_tmp components/dashboard
-mv app/Journal app/journal_tmp
-mv app/journal_tmp app/journal
-mv app/Login app/login_tmp
-mv app/login_tmp app/login
-mv app/Dashboard app/dashboard_tmp 2>/dev/null || true
-cd ~/Bullseye_fx_backup/frontend
-find . -type d -print | sort
-mv components/Dashboard components/dashboard
-sed -i 's/components\/Dashboard/components\/dashboard/g' app/page.tsx app/dashboard/page.tsx
-npm run build
-cat -n app/Journal/Page.tsx
-cd ~/Bullseye_fx_backup/frontend
-cat > app/Journal/Page.tsx <<'EOF'
-import TradeCard from "../../components/journal/TradeCard";
-
-export default function TradingJournal() {
-  return (
-    <div style={{ padding: "30px" }}>
-      <h1>Trading Journal</h1>
-
-      <p>Record every trade and improve your performance.</p>
-
-      <TradeCard
-        pair="XAU/USD"
-        type="BUY"
-        result="+$250"
-      />
-
-      <TradeCard
-        pair="NAS100"
-        type="SELL"
-        result="-$80"
-      />
-
-      <TradeCard
-        pair="S&P 500"
-        type="BUY"
-        result="+$145"
-      />
-    </div>
-  );
-}
-EOF
-
-npm run build
-cat > app/Journal/Page.tsx << 'EOF'
-export default function TradingJournal() {
-  return (
-    <div>
-      <h1>Trading Journal</h1>
-      <p>Record every trade and improve your performance.</p>
-
-      <TradeCard
-        pair="XAU/USD"
-        type="BUY"
-        result="+$250"
-      />
-
-      <TradeCard
-        pair="NAS100"
-        type="SELL"
-        result="-$80"
-      />
-
-      <TradeCard
-        pair="S&P 500"
-        type="BUY"
-        result="+$145"
-      />
-    </div>
-  );
-}
-EOF
-
-cd ~/Bullseye_fx_backup/frontend
-sed -n '1,80p' app/journal/Page.tsx
-head -n 25 app/Journal/Page.tsx > app/Journal/Page.tmp && mv app/Journal/Page.tmp app/Journal/Page.tsx
-npm run build
-cd ~/Bullseye_fx_backup/frontend
+cd ~/bullseye-fx-v-1-project/frontend
 python3 - <<'PY'
 from pathlib import Path
 
-p = Path("app/journal/Page.tsx")
-text = p.read_text()
+p = Path("lib/Api.ts")
+s = p.read_text()
 
-marker = '\nexport default function TradingJournal() {'
-first = text.find(marker)
-second = text.find(marker, first + 1)
+s = s.replace(
+    "const API_URL = 'http://localhost:8000';",
+    """const API_URL =
+  typeof window !== "undefined"
+    ? `https://${window.location.hostname.replace(/^3000-/, "8000-")}`
+    : "http://127.0.0.1:8000";"""
+)
 
-if second != -1:
-    text = text[:second].rstrip() + '\n'
-
-p.write_text(text)
+p.write_text(s)
 PY
 
-cat app/journal/Page.tsx
-cd ~/Bullseye_fx_backup/frontend
+head -12 lib/Api.ts
+cd ~/bullseye-fx-v-1-project/frontend
+grep -Rni "localhost:8000" app lib components --include="*.tsx" --include="*.ts"
+cd ~/bullseye-fx-v-1-project/frontend
+grep -Rni "localhost:8000" app lib components --include="*.tsx" --include="*.ts"
+cd ~/bullseye-fx-v-1-project/frontend
+python3 - <<'PY'
+from pathlib import Path
+
+p = Path("app/login/page.tsx")
+s = p.read_text()
+
+s = s.replace(
+    'fetch(\'http://localhost:8000/login\',',
+    '''fetch(
+        `https://${window.location.hostname.replace(/^3000-/, '8000-')}/auth/login`,'''
+)
+
+p.write_text(s)
+PY
+
+cd ~/bullseye-fx-v-1-project/frontend
+python3 - <<'PY'
+from pathlib import Path
+
+p = Path("app/login/page.tsx")
+s = p.read_text()
+
+s = s.replace(
+    'fetch(\'http://localhost:8000/login\',',
+    '''fetch(
+        `https://${window.location.hostname.replace(/^3000-/, '8000-')}/auth/login`,'''
+)
+
+p.write_text(s)
+PY
+
+grep -nE "fetch|localhost:8000|auth/login" app/login/page.tsx
+cd ~/bullseye-fx-v-1-project/frontend
+python3 - <<'PY'
+from pathlib import Path
+
+p = Path("app/login/page.tsx")
+s = p.read_text()
+
+s = s.replace(
+    'const res = await fetch(\'http://localhost:8000/login\', {',
+    '''const res = await fetch(
+        `https://${window.location.hostname.replace(/^3000-/, "8000-")}/auth/login`,
+        {'''
+)
+
+p.write_text(s)
+PY
+
+sed -n '8,22p' app/login/page.tsx
+cd ~/bullseye-fx-v-1-project/frontend
+python3 - <<'PY'
+from pathlib import Path
+
+p = Path("app/login/page.tsx")
+s = p.read_text()
+
+s = s.replace(
+    '"http://localhost:8000/login"',
+    '`https://${window.location.hostname.replace(/^3000-/, "8000-")}/auth/login`'
+)
+
+p.write_text(s)
+PY
+
+sed -n '10,20p' app/login/page.tsx
+cd ~/bullseye-fx-v-1-project/frontend
 npm run build
-cd ~/Bullseye_fx_backup/frontend
-npm run build
-cd ~/Bullseye_fx_backup
-git status
-cd ~/Bullseye_fx_backup && git status --short
-cat >> .gitignore << 'EOF'
-__pycache__/
-*.pyc
-*.swp
-backend/venv/
-node_modules/
-.next/
-EOF
-
-git add -A
-git commit -m "fix: resolve case sensitivity issues - rename Dashboard to dashboard and Journal files"
-git push
-git remote set-url origin https://github.com/Brian-17/bullseye.git
-git push -u origin main
-git pull origin main
-git remote set-url origin https://github.com/Brian-17/bullseye.git
-git push -u origin main
-git push -f origin main
-vercel login
-vercel clone bullseye-fx-v-1-project
-cd bullseye-fx-v-1-project
-npm install -g vercel
-vercel login
-vercel pull --yes --environment=Production --token=$(vercel whoami)
-vercel link
-vercel pull --yes --environment=Production
-vercel pull --yes --environment=production
-npm install @supabase/supabase-js
-mkdir -p lib
-cat > lib/supabaseClient.ts << 'EOF'
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-EOF
-
-vercel --prod
-ls
-cd bullseye-fx-v-1-project
-rm -rf lib
-mkdir -p lib
-cat > lib/supabaseClient.ts << 'EOF'
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-EOF
-
-vercel --prod
-vercel unlink
-rm .vercel/project.json
-vercel link
-rm -rf .vercel
-vercel link
-rm -rf .vercel
-vercel link --project=bullseye-fx-v-1-project
-cat .vercel/project.json
-vercel --prod
-rm -rf node_modules .vercel
-npm install
-vercel link --project=bullseye-fx-v-1-project --yes
-vercel --prod
-rm -rf node_modules .vercel
-npm install
-vercel link --project=bullseye-fx-v-1-project --yes
-vercel --prod
-rm -rf node_modules .vercel
+cd ~/bullseye-fx-v-1-project/frontend
+grep -nE "fetch|auth/login|localhost:8000" app/login/page.tsx
+cd ~/bullseye-fx-v-1-project/backend
+curl -i -X POST http://127.0.0.1:8000/auth/login   -H "Content-Type: application/json"   -d '{"email":"dashboardtest@example.com","password":"TestPassword123!"}'
+cd ~/bullseye-fx-v-1-project/frontend
+grep -n "const res = await fetch" app/login/page.tsx
+echo "https://$(echo "$CLOUD_SHELL_WEB_HOST" 2>/dev/null)"
+hostname
+echo "$CLOUD_SHELL_WEB_HOST"
+env | grep -iE 'cloud.*shell|web.*host|preview'
+cd ~/bullseye-fx-v-1-project
+git status --short
+cd ~/bullseye-fx-v-1-project
+git status --short
+cd ~/Bullseye_fx_-v.1-project
 pwd
-ls -la
-cat package.json | grep name
-rm -rf .vercel
-vercel link --project=bullseye-fx-v-1-project --yes
-vercel --prod
-cat > .vercelignore << EOF
-node_modules
-.next
-.git
-*.log
+cd ~/Bullseye_fx_-v.1-project
+ls
+cd ~/Bullseye-fx-v-1-project
+cd ~
+ls
+unzip -q "Bullseye_fx_-v.1-project--main (1).zip" -d bullseye-check
+ls -lh
+unzip -q 'Bullseye-fx-v-1-project--main (3).zip' -d bullseye
+unzip -q ./*.zip -d bullseye
+ls bullseye
+cd bullseye/Bullseye-fx-v-1-project
+cd bullseye/Bullseye-fx-v-1-project--main
+ls -lb bullseye
+cd bullseye/Bull
+cd bullseye/B*
+ls
+cd frontend
+ls
+ls -lb lib
+cat tsconfig.json
+cat next.config.js
+cd ..
+pwd
+cat next.config.js
+ls -la frontend | grep -E "next.config|tsconfig|package"
+grep -RIn "@/lib/Api" frontend --exclude-dir=node_modules --exclude-dir=.next
+find frontend -type f \( -name "*.ts" -o -name "*.tsx" \) -print | grep -E "Api|api"
+cat frontend/lib/Api.js
+find frontend -type f -iname "api.*" -print
+cat frontend/lib/Api.ts
+cd frontend && node -e "let fs=require('fs');let p=JSON.parse(fs.readFileSync('tsconfig.json','utf8'));p.compilerOptions.baseUrl='.';p.compilerOptions.paths={'@/*':['./*']};fs.writeFileSync('tsconfig.json',JSON.stringify(p,null,2)+'\n')"
+cat package.json
+find app components lib -type f | sort
+grep -RInE "@/lib/[Aa]pi|lib/[Aa]pi" app components lib --exclude-dir=node_modules
+npm run build
+npm install
+npm run build
+sed -i '/"baseUrl":/d' tsconfig.json
+npm run build
+python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+cd ../backend
+pwd
+cd ~/bullseye/Bullseye-fx-v-1-project--main/frontend
+cd ~/bullseye
+ls
+cd ~/bullseye/B*
+cd frontend
+curl http://localhost:8000/health
+curl http://localhost:8000/dashboard/stats
+curl -i http://localhost:8000/docs
+cat app/register/page.tsx
+pdw
+ls
+pdw
+cd backend 
+cd backend
+c
+cd frontend
+cat app/register/page.tsx
+find app -type f -iname "*register*" -print
+pwd
+cd ~/bullseye/B*/frontend
+pwd
+find app -type f -iname "*register*" -print
+find app -maxdepth 3 -type f -print
+cat app/register/page.tsx
+grep -nE "form|onSubmit|button|Register|disabled|fetch|api" app/register/page.tsx
+sed -n '40,65p' app/register/page.tsx
+cd ../backend
+grep -RInE "register|@router.post" app/routes/auth.py
+cd ../backend
+grep -RInE "register|@router.post" app/routes/auth.py
+grep -RIn "class UserRegister" app
+sed -n '1,20p' app/schemas/out.py
+find app -type f -name "out.py" -print
+grep -RIn "class UserRegister" app
+sed -n '1,30p' app/schemas/auth.py
+sed -n '1,35p' app/routes/auth.py
+grep -RInE "NEXT_PUBLIC|localhost:8000|API_URL|BASE_URL" . --exclude-dir=node_modules --exclude-dir=.next
+grep -RInE "localhost:8000|/register|fetch\(|axios|API_URL|NEXT_PUBLIC" app components lib --exclude-dir=node_modules
+cd ../frontend
+pwd
+cd ~/bullseye/B*/frontend
+pwd
+grep -RInE "localhost:8000|NEXT_PUBLIC|API_URL|BASE_URL" app components lib --exclude-dir=node_modules --exclude-dir=.next
+grep -nE "^export|register|login" lib/Api.ts
+sed -n '1,45p' lib/Api.ts
+cp app/register/page.tsx app/register/page.tsx.backup
+cp lib/Api.ts lib/Api.ts.backup
+cat >> lib/Api.ts <<'EOF'
+
+export async function registerUser(data: {
+  username: string;
+  email: string;
+  password: string;
+}) {
+  const response = await fetch(`${API_URL}/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json().catch(() => null);
+
+  if (!response.ok) {
+    throw new Error(
+      result?.detail || result?.message || "Registration failed"
+    );
+  }
+
+  return result;
+}
 EOF
 
-rm -rf .vercel
-vercel link --project=bullseye-fx-v-1-project --yes
-vercel --prod --force --no-git
-cat > .vercelignore << EOF
-node_modules
-.next
-.git
-*.log
+cat > app/register/page.tsx <<'EOF'
+"use client";
+
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { registerUser } from "../../lib/Api";
+
+export default function RegisterPage() {
+  const router = useRouter();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+
+    if (!username.trim() || !email.trim() || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await registerUser({
+        username: username.trim(),
+        email: email.trim(),
+        password,
+      });
+
+      router.push("/login");
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Registration failed."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <main style={{ maxWidth: 420, margin: "60px auto", padding: 20 }}>
+      <h1>Create Account</h1>
+
+      <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Brian17"
+            required
+            style={{ display: "block", width: "100%", padding: 10 }}
+          />
+        </div>
+
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="brian@example.com"
+            required
+            style={{ display: "block", width: "100%", padding: 10 }}
+          />
+        </div>
+
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="StrongPassword123"
+            required
+            minLength={6}
+            style={{ display: "block", width: "100%", padding: 10 }}
+          />
+        </div>
+
+        {error && (
+          <p style={{ color: "red", marginBottom: 16 }}>
+            {error}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            width: "100%",
+            padding: 12,
+            cursor: loading ? "not-allowed" : "pointer",
+          }}
+        >
+          {loading ? "Creating account..." : "Register"}
+        </button>
+      </form>
+
+      <p style={{ marginTop: 20 }}>
+        Already have an account?{" "}
+        <a href="/login">Log in</a>
+      </p>
+    </main>
+  );
+}
 EOF
 
-rm -rf .vercel
-vercel link --project=bullseye-fx-v-1-project --yes
-vercel --prod --force --no-git
-vercel --prod --force
-vercel --prod --force --no-git
-vercel --prod --force
-git init
+npm run build
+grep -nE "export|login|Login|fetch|POST" lib/Api.ts app/login/page.tsx
+cp app/login/page.tsx app/login/page.tsx.backup
+cat >> lib/Api.ts <<'EOF'
+
+export async function loginUser(data: {
+  username: string;
+  password: string;
+}) {
+  const response = await fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json().catch(() => null);
+
+  if (!response.ok) {
+    throw new Error(
+      result?.detail || result?.message || "Login failed"
+    );
+  }
+
+  if (result?.access_token) {
+    localStorage.setItem("access_token", result.access_token);
+  }
+
+  return result;
+}
+EOF
+
+cat > app/login/page.tsx <<'EOF'
+"use client";
+
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { loginUser } from "../../lib/Api";
+
+export default function LoginPage() {
+  const router = useRouter();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      await loginUser({
+        username: username.trim(),
+        password,
+      });
+
+      router.push("/dashboard");
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Login failed."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <main style={{ maxWidth: 420, margin: "60px auto", padding: 20 }}>
+      <h1 style={{ textAlign: "center" }}>Login</h1>
+
+      <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: 10,
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: 10,
+            }}
+          />
+        </div>
+
+        {error && (
+          <p style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            width: "100%",
+            padding: 12,
+          }}
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+      </form>
+
+      <p style={{ marginTop: 20, textAlign: "center" }}>
+        Don't have an account?{" "}
+        <a href="/register">Create one</a>
+      </p>
+    </main>
+  );
+}
+EOF
+
+npm run build
+git status
+git add .
+git commit -m "Fix registration flow"
+git push
+git remote -v
+git remote set-url origin https://github.com/Brian-17/Bullseye_FX_-V.1-project-.git
+git remote -v
+git push
+git pull --rebase origin main
+git push origin main
+git pull --rebase origin main
+git status
